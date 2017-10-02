@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  days: 1
+  intensity: 1
+  location_id: 1
+  user_id: 1
+
+two:
+  title: MyString
+  days: 1
+  intensity: 1
+  location_id: 1
+  user_id: 1
