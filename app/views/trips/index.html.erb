@@ -1,0 +1,18 @@
+<h1>Trips</h1>
+
+<% @trips.each do |trip| %>
+  <h2><%=trip.user.name%>: <%=trip.title%></h2>
+    <p>Total Days: <%=trip.end_date.day - trip.start_date.day%> | Intensity: <%=trip.intensity%></p>
+    <p><%=trip.blurb%></p>
+
+  <% trip.destinations.each do |destination| %>
+    <h3><%=destination.name%></h3>
+    <span style="font-weight:bold"><%=destination.category.capitalize%> | <%=destination.address%></span><br>
+    <p><%=destination.description%></p><br>
+  <% end %>
+<% end %>
+
+
+
+<!-- logout button add to elsewhere later -->
+<%= link_to "Logout", logout_path, method: "delete"%>

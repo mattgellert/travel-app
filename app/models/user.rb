@@ -5,4 +5,5 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships
   has_many :trips
   has_many :reviews
+  has_secure_password
 end

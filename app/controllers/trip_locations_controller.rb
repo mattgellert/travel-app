@@ -1,2 +1,0 @@
-class TripLocationsController < ApplicationController
-end

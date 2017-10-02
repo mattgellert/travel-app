@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20171002154023) do
   create_table "trip_destinations", force: :cascade do |t|
     t.integer "trip_id"
     t.integer "destination_id"
+    t.integer "day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,9 +70,10 @@ ActiveRecord::Schema.define(version: 20171002154023) do
 
   create_table "trips", force: :cascade do |t|
     t.string "title"
-    t.integer "days"
+    t.text "blurb"
+    t.date "start_date"
+    t.date "end_date"
     t.integer "intensity"
-    t.integer "location_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

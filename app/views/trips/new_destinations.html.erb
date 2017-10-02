@@ -1,0 +1,42 @@
+<%= form_for @trip, url: create_destinations_path do |f| %>
+  <% count = 1%>
+  <% @trip.trip_duration.times do %>
+
+    <h1>Day <%=count%></h1>
+
+    <hr>
+
+    <!-- form to fill in the table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Name:</th>
+          <th>Description:</th>
+          <th>Address:</th>
+          <th>Category:</th>
+          <th>Stars:</th>
+          <th>Note:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <%= f.fields_for :destinations do |dest| %>
+          <tr>
+            <td><%=dest.text_field :name %></td>
+            <td><%=dest.text_area :description %></td>
+            <td><%=dest.text_field :address %></td>
+            <td><%=dest.collection_select :category, Destination.category, :to_s, :to_s %></td>
+            <%= dest.fields_for :ratings do |rating| %>
+              <td><%=rating.range_field :stars, in: 1..5 %></td>
+              <td><%=rating.text_area :note%></td>
+            <% end %>
+            <td><%=dest.hidden_field :day, value: count%></td>
+          </tr>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+    <% count += 1 %>
+  <% end %>
+  <%= f.submit "Hope this works" %>
+<% end %>

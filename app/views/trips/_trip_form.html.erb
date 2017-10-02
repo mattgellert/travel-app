@@ -1,0 +1,43 @@
+<%= form_for trip do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <br>
+
+  <%= f.label :blurb %>
+  <%= f.text_field :blurb %>
+
+  <br>
+
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date %>
+
+  <br>
+
+  <%= f.label :end_date %>
+  <%= f.date_field :end_date %>
+
+  <br>
+
+  <%= f.label :intensity %>
+  <%= f.range_field :intensity, in: 1..5 %>
+
+  <br>
+
+  <label>Locations</label>
+  <p>If creating a new location, enter the city followed by the country separated by a comma</p>
+  <%= render 'location_name'%>
+
+  <br>
+
+  <%= render 'location_name'%>
+
+  <br>
+
+  <%= render 'location_name'%>
+
+  <input type="hidden" name="trip[user_id]" value="<%=session[:user_id]%>">
+
+  <%= f.submit %>
+
+<% end %>
