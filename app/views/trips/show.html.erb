@@ -1,0 +1,46 @@
+<h1><%= @trip.title %></h1>
+<% days = @trip.trip_duration %>
+
+<hr>
+
+<h2>By <%= @trip.user.name %></h2>
+<h2>Date: <%= @trip.start_date %> - <%= @trip.end_date %></h2>
+<h2>Days: <%= days %></h2>
+<h2>Key Cities:
+  <% @trip.locations.each do |location| %>
+  <%= location.make_location_name %>
+  <% end.join("|") %>
+</h2>
+<h2>Intensity: <%= @trip.intensity %></h2>
+
+<hr>
+
+<% count = 1 %>
+<% days.times do %>
+<% if !@trip.trip_destinations_by_day(count).empty? %>
+<h2>Day <%=count%></h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rating</th>
+      <th>City</th>
+      <th>Blurb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trip.trip_destinations_by_day(count).each do |destination| %>
+    <tr>
+      <td><%= destination.name %></td>
+      <td><%= destination.owner_rating(@trip).stars %></td>
+      <td><%= destination.category %></td>
+      <td><%= destination.description %></td>
+      <td><%= destination.location.city %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
+<% end %>
+<% count += 1 %>
+<% end %>

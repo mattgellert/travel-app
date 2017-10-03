@@ -29,4 +29,30 @@ class Trip < ApplicationRecord
     (self.end_date - self.start_date).to_i + 1
   end
 
+  #returns a trip's destinations array by day
+  def trip_destinations_by_day(day)
+    self.trip_destinations.where(day: day).collect do |t_d|
+      t_d.destination
+    end
+  end
+
+  def destinations_attributes=(destinations)
+    destinations.delete_if do |n, at| at[:name].empty? end
+    destinations.each do |num, atts|
+      new_dest = Destination.create(
+        name: atts[:name],
+        description: atts[:description],
+        address: atts[:address],
+        category: atts[:category], location_id: 1)
+        # byebug
+      rating = Rating.create(stars: atts[:ratings_attributes]["0"
+        ][:stars], note: atts[:ratings_attributes]["0"][:note], user_id: self.user.id)
+      new_dest.ratings << rating
+      self.destinations << new_dest
+      trip_dest = TripDestination.find_by(trip_id: self.id, destination_id: new_dest.id)
+      trip_dest.day = atts[:day]
+      trip_dest.save
+    end
+  end
+
 end

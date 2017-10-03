@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20171002154023) do
     t.integer "stars"
     t.text "note"
     t.integer "destination_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
