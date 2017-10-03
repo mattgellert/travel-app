@@ -13,6 +13,7 @@
           <th>Name:</th>
           <th>Description:</th>
           <th>Address:</th>
+          <th>Location: (City, Country)</th>
           <th>Category:</th>
           <th>Stars:</th>
           <th>Note:</th>
@@ -25,6 +26,12 @@
             <td><%=dest.text_field :name %></td>
             <td><%=dest.text_area :description %></td>
             <td><%=dest.text_field :address %></td>
+            <td><%= dest.text_field :dest_location_name, list: "locations_autocomplete"%></td>
+            <datalist id="locations_autocomplete">
+              <% Location.all.each do |location| %>
+                <option value="<%=location.city%>, <%=location.country%>">
+              <% end %>
+            </datalist>
             <td><%=dest.collection_select :category, Destination.category, :to_s, :to_s %></td>
             <%= dest.fields_for :ratings do |rating| %>
               <td><%=rating.range_field :stars, in: 1..5 %></td>

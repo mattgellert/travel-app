@@ -5,5 +5,38 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships
   has_many :trips
   has_many :reviews
+  has_many :ratings
+  has_many :destinations, through: :ratings
   has_secure_password
+
+
+  def sort_by_recent_trips(trips)
+    trips.sort_by do |trip|
+      trip.start_date
+    end.reverse
+  end
+
+  def num_of_followers
+    self.followers.size
+  end
+
+  def num_of_followees
+    self.followees.size
+  end
+
+  def average_intensity
+    self.trips.sum(&:intensity).to_f / self.trips.size
+  end
+
+  def self.intensity_level(n)
+    if n <= 2
+      "Chill"
+    elsif n == 5
+      "ON FIRE"
+    elsif n == 4
+      "Pretty intense"
+    else
+      "OK"
+    end
+  end
 end

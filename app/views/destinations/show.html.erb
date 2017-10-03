@@ -1,0 +1,32 @@
+<h1><%= @destination.name %></h1>
+
+<hr>
+
+<h2>Description</h2>
+<%= @destination.description %> <br><br>
+
+<h2>Address</h2>
+<%= @destination.address %> <br><br>
+
+<h2>Category</h2>
+<%= @destination.category %> <br><br>
+
+<h2>Location</h2>
+<%= @destination.location.city %> <br><br>
+
+<h2>Rating</h2>
+<%= @destination.dest_average_rating%>
+
+<hr>
+
+<h2>Destination Ratings</h2>
+
+<ul>
+  <% @destination.ratings.each_with_index do |rating, i|%>
+  <li><%= rating.user.name %> | <%= rating.stars %> Stars
+    <ul>
+      <li>Comment: <%= rating.note %></li>
+    </ul>
+  </li>
+  <% end %>
+</ul>

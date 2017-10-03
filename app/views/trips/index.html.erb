@@ -1,18 +1,27 @@
 <h1>Trips</h1>
 
-<% @trips.each do |trip| %>
-  <h2><%=trip.user.name%>: <%=trip.title%></h2>
-    <p>Total Days: <%=trip.end_date.day - trip.start_date.day%> | Intensity: <%=trip.intensity%></p>
-    <p><%=trip.blurb%></p>
-
-  <% trip.destinations.each do |destination| %>
-    <h3><%=destination.name%></h3>
-    <span style="font-weight:bold"><%=destination.category.capitalize%> | <%=destination.address%></span><br>
-    <p><%=destination.description%></p><br>
-  <% end %>
+<!-- Search Bar -->
+<h4>Search Trips</h4>
+<%= form_tag trip_search_path, method: "get" do %>
+  Location: <%= text_field_tag 'search[location]'%> <br>
+  Days: <%= number_field_tag 'search[days]'%> <br>
+  All Friends?: <%= check_box_tag 'search[qfriends]' %>
+  <%= submit_tag "Search" %>
 <% end %>
 
+<ul>
+<% @trips.each do |trip| %>
+  <li><%=link_to trip.title, trip_path(trip) %></li>
+    <ul>
+      <li>By: <%= trip.user.name %></li>
+      <li>Total Days: <%=trip.trip_duration%> | Intensity: <%=trip.intensity%></li>
+      <li>Blurb: <%= trip.blurb %></li>
+      <li>Some Destinations:
+        <% trip.first_three_destinations.each do |dest| %>
+          <%= link_to dest.name, destination_path(dest) %>,
+        <% end %>...
+      </li>
+    </ul>
 
-
-<!-- logout button add to elsewhere later -->
-<%= link_to "Logout", logout_path, method: "delete"%>
+<% end %>
+</ul>

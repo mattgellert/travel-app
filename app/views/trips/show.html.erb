@@ -7,9 +7,11 @@
 <h2>Date: <%= @trip.start_date %> - <%= @trip.end_date %></h2>
 <h2>Days: <%= days %></h2>
 <h2>Key Cities:
-  <% @trip.locations.each do |location| %>
-  <%= location.make_location_name %>
-  <% end.join("|") %>
+  <ul>
+    <% @trip.locations.each do |location| %>
+    <li><%= location.make_location_name %></li>
+    <% end %>
+  </ul>
 </h2>
 <h2>Intensity: <%= @trip.intensity %></h2>
 
@@ -24,14 +26,15 @@
     <tr>
       <th>Name</th>
       <th>Rating</th>
-      <th>City</th>
+      <th>Destination Type</th>
       <th>Blurb</th>
+      <th>City</th>
     </tr>
   </thead>
   <tbody>
     <% @trip.trip_destinations_by_day(count).each do |destination| %>
     <tr>
-      <td><%= destination.name %></td>
+      <td><%=link_to destination.name, destination_path(destination) %></td>
       <td><%= destination.owner_rating(@trip).stars %></td>
       <td><%= destination.category %></td>
       <td><%= destination.description %></td>

@@ -1,6 +1,23 @@
-<input type="text" name="trip[location_names][]" list="locations_autocomplete">
-<datalist id="locations_autocomplete">
-  <% Location.all.each do |location| %>
-    <option value="<%=location.city%>, <%=location.country%>">
-  <% end %>
-</datalist>
+<input type="text" name="trip[location_names][]" id="google_location_2" hidden><br>
+<div class="pac-card" id="pac-card-2">
+  <div id="pac-container">
+    <input id="pac-input-2" type="text" placeholder="Enter a location">
+  </div>
+</div>
+<div id="map"></div>
+<script>
+  function initMap2() {
+    var map2 = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -33.8688, lng: 151.2195},
+      zoom: 13
+    })
+    var card = document.getElementById('pac-card-2')
+    var input = document.getElementById('pac-input-2')
+    var autocomplete2 = new google.maps.places.Autocomplete(input)
+    autocomplete2.bindTo('bounds', map2)
+    autocomplete2.addListener('place_changed', function() {
+      var place = autocomplete2.getPlace()
+      $("#google_location_2").val(place.adr_address)
+    })
+  }
+</script>

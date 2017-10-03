@@ -1,0 +1,3 @@
+<%= form_for @location, url: "/api" do |f| %>
+    <%= f.text_field :city, :input_html =>{:id => 'gmaps-input-address'}, :placeholder => 'Start typing a place...'%>
+<% end %>

@@ -5,14 +5,16 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
-
+  get "/logout", to: "sessions#destroy"
+  get "/tripsearch", to: "trips#search", as: "trip_search"
   resources :destinations do
     resources :ratings
   end
 
   post "/users/:id", to: "relationships#create", as: "new_relationship"
   delete "/users/:id", to: "relationships#destroy", as: "destroy_relationship"
+  get "/users/:id/followers", to: "users#followers", as: "followers"
+  get "/users/:id/followees", to: "users#followees", as: "followees"
   resources :relationships, only: [:index]
 
   get "/trips/:id/new_destinations", to: "trips#new_destinations", as: "new_destinations"

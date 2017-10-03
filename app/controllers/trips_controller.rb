@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
 
+
   def index
     @trips = Trip.all
   end
@@ -10,7 +11,6 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.create(trip_params)
-    # byebug
     redirect_to new_destinations_path(@trip)
   end
 
@@ -24,14 +24,16 @@ class TripsController < ApplicationController
     destination3.ratings.build
   end
 
-# params = { "trip"=>{"destinations_attributes"=>
-#   {"0"=>{"name"=>"Great Barrier Reef", "description"=>"Snorkeling at great barrier reef", "address"=>"balh", "category"=>"attraction", "ratings"=>{"stars"=>"3", "note"=>"what what"}, "day"=>"1"}, "1"=>{"name"=>"Food", "description"=>"yum", "address"=>"blah", "category"=>"restaurant", "ratings"=>{"stars"=>"3", "note"=>"yummy"}, "day"=>"1"}, "2"=>{"name"=>"", "description"=>"", "address"=>"", "category"=>"restaurant", "ratings"=>{"stars"=>"3", "note"=>""}, "day"=>"1"}, "3"=>{"name"=>"testint", "description"=>"g", "address"=>"g", "category"=>"restaurant", "ratings"=>{"stars"=>"3", "note"=>"g"}, "day"=>"2"}, "4"=>{"name"=>"", "description"=>"", "address"=>"", "category"=>"restaurant", "ratings"=>{"stars"=>"3", "note"=>""}, "day"=>"2"}}}}
-
   def create_destinations
-    # byebug
     @trip = Trip.find(params[:id])
     @trip.update(trip_params)
     redirect_to trip_path(@trip)
+  end
+
+  def search
+    # byebug
+    @trips = Trip.trip_search_results(search_params, current_user)
+    render "index"
   end
 
   def edit
@@ -49,7 +51,11 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :days, :blurb, :intensity, :user_id, :start_date, :end_date,location_names: [], destinations_attributes: [:name, :description, :address, :category, :day, ratings_attributes:{}])
+    params.require(:trip).permit(:title, :days, :blurb, :intensity, :user_id, :start_date, :end_date,location_names: [], destinations_attributes: [:name, :description, :address, :category, :day, :dest_location_name, ratings_attributes:{}])
+  end
+
+  def search_params
+    params.require(:search).permit(:location, :days, :qfriends)
   end
 
 end

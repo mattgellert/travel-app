@@ -1,0 +1,9 @@
+<% if relationships.empty?%>
+No one :(
+<% end %>
+
+<ul>
+  <% relationships.each do |person| %>
+  <li><%= link_to person.name, user_path(person) %></li>
+  <% end %>
+</ul>
