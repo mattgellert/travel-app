@@ -6,4 +6,7 @@ By: <%= @review.reviewer.name %> <br>
 Comment: <%= @review.comment %> <br>
 
 <br><br>
-<!-- <%= link_to "Edit Trip Review", edit_trip_review_path(@trip, @review)%> -->
+
+<% if @review.reviewer == current_user %>
+<%= link_to "Edit Trip Review", edit_trip_review_path(@trip, @review)%>
+<% end %>

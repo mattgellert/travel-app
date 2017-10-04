@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-
+  before_action :logged_in
 
   def index
     @trips = Trip.all
@@ -7,10 +7,12 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    location1 = @trip.locations.build
+    location2 = @trip.locations.build
+    location3 = @trip.locations.build
   end
 
   def create
-    # byebug
     @trip = Trip.create(trip_params)
     redirect_to new_destinations_path(@trip)
   end
@@ -32,7 +34,6 @@ class TripsController < ApplicationController
   end
 
   def search
-    # byebug
     @trips = Trip.trip_search_results(search_params, current_user)
     render "index"
   end
@@ -43,6 +44,20 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
+    @trip.update(trip_params)
+    redirect_to edit_destinations_path(@trip)
+  end
+
+  def edit_destinations
+    @trip = Trip.find(params[:id])
+    # byebug
+    #what to do here
+  end
+
+  def update_destinations
+    @trip = Trip.find(params[:id])
+    @trip.update(trip_params)
+    redirect_to trip_path(@trip)
   end
 
   def show
@@ -52,7 +67,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :days, :blurb, :intensity, :user_id, :start_date, :end_date,location_names: [], destinations_attributes: [:name, :description, :address, :category, :day, :dest_location_name, ratings_attributes:{}])
+    params.require(:trip).permit(:title, :days, :blurb, :intensity, :user_id, :start_date, :end_date,location_names: [], destinations_attributes: [:id, :name, :description, :address, :category, :day, :dest_location_name, ratings_attributes:{}])
   end
 
   def search_params
