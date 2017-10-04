@@ -56,7 +56,7 @@
   <% @trip.reviews.each do |review|%>
   <li><%=link_to review.reviewer.name, user_path(review.reviewer)%>:
     <ul>
-      <li><%= review.comment%></li>
+      <li><%= link_to review.comment, trip_review_path(@trip, review)%></li>
     </ul>
   </li>
   <% end %>
