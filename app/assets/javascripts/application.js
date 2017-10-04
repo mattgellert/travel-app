@@ -13,3 +13,45 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery
+
+// document.addEventListener('DOMContentLoaded', function() {
+
+  function initialize() {
+    let inputs = Number(document.getElementById('trip_duration').value)
+    for (let i = 0; i <= inputs; i++) {
+        initMap(i)
+    }
+  }
+
+  function initMap(n) {
+    let map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -33.8688, lng: 151.2195},
+      zoom: 13
+    })
+    let card = document.getElementById(`pac-card-${n}`)
+    let input = document.getElementById(`pac-input-${n}`)
+    let autocomplete = new google.maps.places.Autocomplete(input)
+    autocomplete.bindTo('bounds', map)
+    autocomplete.addListener('place_changed', function() {
+      let place = autocomplete.getPlace()
+      $(`#google_location_${n}`).val(place.adr_address)
+      $(`#google_address_${n}`).val(place.formatted_address)
+      $(`#google_name_${n}`).val(place.name)
+
+      let rating = 0
+      let review = "something"
+      place.reviews.forEach(function(elem){
+        if(rating < elem.rating){
+          rating = elem.rating
+          review = elem.text
+        }
+      })
+      $(`#google_desc_${n}`).val(review)
+    })
+  }
+
+
+
+
+// })

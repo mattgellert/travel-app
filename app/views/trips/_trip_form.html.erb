@@ -1,3 +1,5 @@
+<input id="trip_duration" value="3" hidden>
+
 <%= form_for trip do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -25,16 +27,18 @@
   <br>
 
   <label>Locations</label>
-  <p>If creating a new location, enter the city followed by the country separated by a comma</p>
-  <%= render 'location_name'%>
 
-  <br>
+  <% [1,2,3].each do |n| %>
+  <input type="text" name="trip[location_names][]" id="google_location_<%= n %>" hidden><br>
+  <div class="pac-card" id="pac-card-<%=n%>">
+    <div id="pac-container">
+      <input id="pac-input-<%= n %>" type="text" placeholder="Enter a location">
+    </div>
+  </div>
+  <div id="map"></div>
+  <% end %>
 
-  <%= render 'location_name'%>
-
-  <br>
-
-  <%= render 'location_name'%>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCozNzitv9TtJWxxAilV3PgGAtSobGc3vM&libraries=places&callback=initialize" async defer></script>
 
   <input type="hidden" name="trip[user_id]" value="<%=session[:user_id]%>">
 

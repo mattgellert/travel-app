@@ -1,0 +1,6 @@
+<input type="text" name="trip[location_names][]" list="locations_autocomplete">
+<datalist id="locations_autocomplete">
+  <% Location.all.each do |location| %>
+    <option value="<%=location.city%>, <%=location.country%>">
+  <% end %>
+</datalist>
