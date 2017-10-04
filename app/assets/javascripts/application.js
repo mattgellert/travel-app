@@ -14,3 +14,33 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery
+
+// document.addEventListener('DOMContentLoaded', function() {
+
+  function initialize() {
+    var inputs = ["1", "2", "3"]
+    inputs.forEach(function(input){
+      initMap(input)
+    })
+  }
+
+
+  function initMap(n) {
+    let map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -33.8688, lng: 151.2195},
+      zoom: 13
+    })
+    let card = document.getElementById(`pac-card-${n}`)
+    let input = document.getElementById(`pac-input-${n}`)
+    let autocomplete = new google.maps.places.Autocomplete(input)
+    autocomplete.bindTo('bounds', map)
+    autocomplete.addListener('place_changed', function() {
+      let place = autocomplete.getPlace()
+      $(`#google_location_${n}`).val(place.adr_address)
+    })
+  }
+
+
+
+
+// })

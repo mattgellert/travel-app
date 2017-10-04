@@ -1,5 +1,6 @@
 <%= form_for @trip, url: create_destinations_path do |f| %>
   <% count = 1%>
+  <!-- <% dest_count = 1 %> -->
   <% @trip.trip_duration.times do %>
 
     <h1>Day <%=count%></h1>
@@ -26,12 +27,17 @@
             <td><%=dest.text_field :name %></td>
             <td><%=dest.text_area :description %></td>
             <td><%=dest.text_field :address %></td>
-            <td><%= dest.text_field :dest_location_name, list: "locations_autocomplete"%></td>
-            <datalist id="locations_autocomplete">
-              <% Location.all.each do |location| %>
-                <option value="<%=location.city%>, <%=location.country%>">
-              <% end %>
-            </datalist>
+            <%= dest.hidden_field :dest_location_name, {id: "google_location_#{dest_count}"} %>
+            <!-- <% byebug %> -->
+            <td>
+              <div class="pac-card" id="pac-card-<%=dest_count%>">
+                <div id="pac-container">
+                  <input id="pac-input-<%= dest_count %>" type="text" placeholder="Enter a location">
+                </div>
+              </div>
+              <div id="map"></div>
+              <% dest_count += 1 %>
+            </td>
             <td><%=dest.collection_select :category, Destination.category, :to_s, :to_s %></td>
             <%= dest.fields_for :ratings do |rating| %>
               <td><%=rating.range_field :stars, in: 1..5 %></td>
@@ -43,7 +49,8 @@
         </tr>
       </tbody>
     </table>
-    <% count += 1 %>
+    <!-- <% count += 1 %> -->
   <% end %>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCozNzitv9TtJWxxAilV3PgGAtSobGc3vM&libraries=places&callback=initialize" async defer></script>
   <%= f.submit "Hope this works" %>
 <% end %>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   get "/tripsearch", to: "trips#search", as: "trip_search"
+  get "/destsearch", to: "destinations#search", as: "destination_search"
   resources :destinations do
     resources :ratings
   end
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   get "/trips/:id/new_destinations", to: "trips#new_destinations", as: "new_destinations"
   patch "/trips/:id/create_destinations", to: "trips#create_destinations", as: "create_destinations"
   resources :trips do
-    resources :reviews
+    resources :reviews, only: [:new, :create]
   end
   resources :users, only: [:show, :new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

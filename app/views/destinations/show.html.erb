@@ -23,7 +23,7 @@
 
 <ul>
   <% @destination.ratings.each_with_index do |rating, i|%>
-  <li><%= rating.user.name %> | <%= rating.stars %> Stars
+  <li><%= link_to rating.user.name, user_path(rating.user) %> | <%= rating.stars %> Stars
     <ul>
       <li>Comment: <%= rating.note %></li>
     </ul>

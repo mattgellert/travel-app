@@ -10,6 +10,7 @@ class TripsController < ApplicationController
   end
 
   def create
+    # byebug
     @trip = Trip.create(trip_params)
     redirect_to new_destinations_path(@trip)
   end

@@ -73,7 +73,8 @@ class Trip < ApplicationRecord
 
 
   def self.trip_search_results(search_params, curr_user)
-    if search_params[:qfriends] == 1
+    # byebug
+    if search_params[:qfriends] &&  search_params[:qfriends].to_i == 1
       curr_user_followees = curr_user.followees
       followees_trips = Trip.all.select {|trip| curr_user_followees.include?(trip.user)}
       followees_trips.select do |trip|

@@ -1,0 +1,24 @@
+<h1>Destinations</h1>
+
+<hr>
+<!-- Search Bar -->
+<h4>Search Destination</h4>
+<%= form_tag destination_search_path, method: "get" do %>
+  Name: <%= text_field_tag 'search[qname]' %> <br>
+  Location: <%= text_field_tag 'search[qlocation]'%> <br>
+  Category: <%= select_tag 'search[qcategory]', options_for_select([nil]+Destination.category)%> <br>
+  <%= submit_tag "Search" %>
+<% end %>
+<hr>
+<ol>
+<% @destinations.each do |dest| %>
+  <li><%=link_to dest.name, destination_path(dest) %></li>
+    <ul>
+      <li>Avg Rating: <%= dest.dest_average_rating %></li>
+      <li>Description: <%= dest.description %></li>
+      <li>Address: <%= dest.address %></li>
+      <li>Category: <%= dest.category %></li>
+    </ul>
+
+<% end %>
+</ol>
