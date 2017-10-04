@@ -1,6 +1,8 @@
+<input id="trip_duration" value="<%= @trip.trip_duration * 3 %>" hidden>
+
 <%= form_for @trip, url: create_destinations_path do |f| %>
   <% count = 1%>
-  <!-- <% dest_count = 1 %> -->
+  <% dest_count = 1 %>
   <% @trip.trip_duration.times do %>
 
     <h1>Day <%=count%></h1>
@@ -13,7 +15,6 @@
         <tr>
           <th>Name:</th>
           <th>Description:</th>
-          <th>Address:</th>
           <th>Location: (City, Country)</th>
           <th>Category:</th>
           <th>Stars:</th>
@@ -26,9 +27,9 @@
           <tr>
             <td><%=dest.text_field :name %></td>
             <td><%=dest.text_area :description %></td>
-            <td><%=dest.text_field :address %></td>
-            <%= dest.hidden_field :dest_location_name, {id: "google_location_#{dest_count}"} %>
-            <!-- <% byebug %> -->
+
+          <%= dest.hidden_field :address, {id: "google_address_#{dest_count}"} %>
+          <%= dest.hidden_field :dest_location_name, {id: "google_location_#{dest_count}"} %>
             <td>
               <div class="pac-card" id="pac-card-<%=dest_count%>">
                 <div id="pac-container">
@@ -49,7 +50,7 @@
         </tr>
       </tbody>
     </table>
-    <!-- <% count += 1 %> -->
+    <% count += 1 %>
   <% end %>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCozNzitv9TtJWxxAilV3PgGAtSobGc3vM&libraries=places&callback=initialize" async defer></script>
   <%= f.submit "Hope this works" %>

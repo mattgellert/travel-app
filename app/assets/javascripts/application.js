@@ -18,12 +18,11 @@
 // document.addEventListener('DOMContentLoaded', function() {
 
   function initialize() {
-    var inputs = ["1", "2", "3"]
-    inputs.forEach(function(input){
-      initMap(input)
-    })
+    let inputs = Number(document.getElementById('trip_duration').value)
+    for (let i = 0; i <= inputs; i++) {
+        initMap(i)
+    }
   }
-
 
   function initMap(n) {
     let map = new google.maps.Map(document.getElementById('map'), {
@@ -37,6 +36,7 @@
     autocomplete.addListener('place_changed', function() {
       let place = autocomplete.getPlace()
       $(`#google_location_${n}`).val(place.adr_address)
+      $(`#google_address_${n}`).val(place.formatted_address)
     })
   }
 

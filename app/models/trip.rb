@@ -9,6 +9,7 @@ class Trip < ApplicationRecord
   accepts_nested_attributes_for :destinations
 
   def location_names=(locations) #2
+   locations.delete_if {|location| location.empty?}
    locations.each do |location|
      if location.include?("locality")#regex finds locality
        city = location.split("span>").delete_if{|y| !y.include?("locality")}[0].chomp("</").split(">")[-1]
