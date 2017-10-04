@@ -1,5 +1,5 @@
 <h1>Edit Review</h1>
-<%= form_for [@destination, @rating],url: {controller: 'ratings', action: 'update'}, method: :patch do |f| %>
+<%= form_for [@destination, @rating],url: {controller: 'ratings', action: 'update'}, method: :patch, html: {class: "form-style-8"} do |f| %>
 <%= f.label :note %>
 <%= f.text_field :note %>
 <br>

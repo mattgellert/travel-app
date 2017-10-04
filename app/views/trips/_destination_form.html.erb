@@ -1,6 +1,6 @@
 <input id="trip_duration" value="<%= trip.trip_duration * 3 %>" hidden>
 
-<%= form_for trip, url: create_destinations_path do |f| %>
+<%= form_for trip, url: create_destinations_path, html: {class: "form-style-8"} do |f| %>
   <% count = 1%>
   <% dest_count = 1 %>
   <% trip.trip_duration.times do %>
