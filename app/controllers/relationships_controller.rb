@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+  before_action :logged_in
 
   def create
     Relationship.create(followee_id: params[:id], follower_id: current_user.id)

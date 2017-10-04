@@ -1,4 +1,7 @@
 <h1><%= @trip.title %></h1>
+<% if @trip.user == current_user %>
+  <%= link_to "Edit Trip", edit_trip_path(@trip)%>
+<% end %>
 <% days = @trip.trip_duration %>
 
 <hr>
@@ -29,7 +32,7 @@
       <th>Name</th>
       <th>Type</th>
       <th>Rating</th>
-      <th>What Others Say</th>
+      <!-- <th>What Others Say</th> -->
       <th>City</th>
       <th>Address</th>
     </tr>
@@ -39,8 +42,8 @@
     <tr>
       <td><%=link_to destination.name, destination_path(destination) %></td>
       <td><%= destination.category %></td>
-      <td><%= destination.owner_rating(@trip).stars %></td>
-      <td><%= destination.description %></td>
+      <td><%= destination.owner_rating(@trip).try(:stars) %></td>
+      <!-- <td><%= destination.description %></td> -->
       <td><%= destination.location.city %></td>
       <td><%= destination.address %></td>
     </tr>

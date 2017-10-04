@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get "/trips/:id/new_destinations", to: "trips#new_destinations", as: "new_destinations"
   patch "/trips/:id/create_destinations", to: "trips#create_destinations", as: "create_destinations"
+  get "/trips/:id/edit_destinations", to: "trips#edit_destinations", as: "edit_destinations"
+  patch "/trips/:id/update_destinations", to: "trips#update_destinations", as: "update_destinations"
   resources :trips do
     resources :reviews, only: [:new, :create, :show, :edit, :update]
   end
