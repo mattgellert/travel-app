@@ -7,6 +7,13 @@ class Destination < ApplicationRecord
   accepts_nested_attributes_for :ratings
 
 
+  #given a trip obj, which trip date does the destination belong to
+  def day(trip)
+    td = TripDestination.find_by(trip_id: trip.id, destination_id: self.id)
+    td.try(:day)
+  end
+
+
   def dest_average_rating
     sum = self.ratings.sum(&:stars)
     sum.to_f / self.ratings.size
@@ -47,7 +54,7 @@ class Destination < ApplicationRecord
 
   #finds destination's owner rating object
   def owner_rating(trip_obj)
-    self.ratings.find {|rating| rating.user_id == trip_obj.user_id}
+    find = self.ratings.find {|rating| rating.user_id == trip_obj.user_id}
   end
 
   def self.destination_sort_by_rating(destinations)
@@ -73,5 +80,8 @@ class Destination < ApplicationRecord
     value.empty? ? true : (self.location.city == value)
   end
 
+  def user_destination_rating(user)
+    self.ratings.select {|rating| rating.user == user}.first
+  end
 
 end

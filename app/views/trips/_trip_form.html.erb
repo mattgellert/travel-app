@@ -1,6 +1,6 @@
 <input id="trip_duration" value="3" hidden>
 
-<%= form_for trip do |f| %>
+<%= form_for trip, html: {class: "form-style-8"} do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
 
@@ -26,13 +26,16 @@
 
   <br>
 
-  <label>Locations</label>
 
-  <% [1,2,3].each do |n| %>
-  <input type="text" name="trip[location_names][]" id="google_location_<%= n %>" hidden><br>
+  <label>Locations:</label>
+  <!-- Showing existing locations -->
+
+  <% locations = trip.locations.collect {|loc| loc.make_location_name} %>
+  <% [0,1,2].each do |n| %>
+  <input type="string" name="trip[location_names][]" id="google_location_<%= n %>" hidden><br>
   <div class="pac-card" id="pac-card-<%=n%>">
     <div id="pac-container">
-      <input id="pac-input-<%= n %>" type="text" placeholder="Enter a location">
+      <input id="pac-input-<%= n %>" type="text" placeholder="Enter a location" value="<%=(locations[n] == ', ') ? nil : locations[n]%>">
     </div>
   </div>
   <div id="map"></div>
@@ -42,6 +45,6 @@
 
   <input type="hidden" name="trip[user_id]" value="<%=session[:user_id]%>">
 
-  <%= f.submit %>
+  <%= f.submit style: "float: right;" %>
 
 <% end %>

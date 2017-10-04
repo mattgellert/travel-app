@@ -1,0 +1,13 @@
+<h1>Review for <%= @destination.name %></h1>
+
+<hr>
+
+By: <%= @rating.user.name %> <br>
+Comment: <%= @rating.note %> <br>
+Average Rating: <%= @rating.stars %> <br>
+
+<br><br>
+
+<% if @rating.user == current_user %>
+  <%= link_to "Edit Destination Review", edit_destination_rating_path(@destination, @rating)%>
+<% end %>

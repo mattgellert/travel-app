@@ -1,0 +1,65 @@
+<input id="trip_duration" value="<%= trip.trip_duration * 3 %>" hidden>
+
+<%= form_for trip, url: create_destinations_path, html: {class: "form-style-8"} do |f| %>
+  <% count = 1%>
+  <% dest_count = 1 %>
+  <% trip.trip_duration.times do %>
+
+    <h1>Day <%=count%></h1>
+
+    <hr>
+
+    <!-- form to fill in the table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Location: (Name, City, Country)</th>
+          <th>Category:</th>
+          <th>Stars:</th>
+          <th>Note:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+
+          <% trip.destinations_of_specific_day(count).each do |destination| %>
+
+            <%= f.fields_for :destinations, destination do |dest| %>
+            <tr>
+            <%= dest.hidden_field :description, {id: "google_desc_#{dest_count}"}%>
+            <%= dest.hidden_field :name, {id: "google_name_#{dest_count}"} %>
+            <%= dest.hidden_field :address, {id: "google_address_#{dest_count}"} %>
+            <%= dest.hidden_field :dest_location_name, {id: "google_location_#{dest_count}"} %>
+            <!-- input -->
+              <td>
+                <div class="pac-card" id="pac-card-<%=dest_count%>">
+                  <div id="pac-container">
+                    <input id="pac-input-<%= dest_count %>" type="text" placeholder="Enter a location" value="<%= destination.name %>">
+                  </div>
+                </div>
+                <div id="map"></div>
+                <% dest_count += 1 %>
+              </td>
+              <td><%=dest.collection_select :category, Destination.category, :to_s, :to_s %></td>
+
+              <% rating = destination.user_destination_rating(current_user) %>
+              <%= dest.fields_for :ratings, rating do |rating| %>
+                <td><%=rating.range_field :stars, in: 1..5 %></td>
+                <td><%=rating.text_area :note%></td>
+              <% end %>
+
+
+              <td><%=dest.hidden_field :day, value: count%></td>
+            </tr>
+            <% end %>
+
+          <% end %>
+          <!-- end loop -->
+        </tr>
+      </tbody>
+    </table>
+    <% count += 1 %>
+  <% end %>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCozNzitv9TtJWxxAilV3PgGAtSobGc3vM&libraries=places&callback=initialize" async defer></script>
+  <%= f.submit "Hope this works" %>
+<% end %>

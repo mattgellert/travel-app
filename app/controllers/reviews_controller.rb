@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :logged_in
+
   def new
     @trip = Trip.find(params[:trip_id])
     @review = Review.new
@@ -37,6 +39,5 @@ class ReviewsController < ApplicationController
     else
       render "edit"
     end
-
   end
 end
