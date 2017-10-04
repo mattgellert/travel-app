@@ -2,7 +2,7 @@
 
 <hr>
 
-<h2>Description</h2>
+<h2>What Others Say</h2>
 <%= @destination.description %> <br><br>
 
 <h2>Address</h2>
@@ -16,6 +16,8 @@
 
 <h2>Rating</h2>
 <%= @destination.dest_average_rating%>
+<br>
+<%= link_to "Add A Destination Review", new_destination_rating_path(@destination) %>
 
 <hr>
 

@@ -2,16 +2,18 @@
 <html>
   <head>
     <title>TravelApp</title>
-    
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+
+
     <% if session[:user_id] %>
       <div class="topnav" id="myTopnav">
+        <a href="/">Welcome</a>
         <a href="/trips">Trips</a>
         <a href="/destinations">Destinations</a>
         <a href="/users/<%=session[:user_id]%>" style="float: right;">Profile</a>

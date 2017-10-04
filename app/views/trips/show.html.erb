@@ -14,7 +14,9 @@
   </ul>
 </h2>
 <h2>Intensity: <%= @trip.intensity %></h2>
-<!-- <%= link_to "Add A Review", new_trip_review_path(@trip) %> -->
+<h2>Vote Trending: <%= @trip.total_votes%></h2>
+<%= link_to "Add A Review", new_trip_review_path(@trip) %>
+
 <hr>
 
 <% count = 1 %>
@@ -25,9 +27,9 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Type</th>
       <th>Rating</th>
-      <th>Destination Type</th>
-      <th>Blurb</th>
+      <th>What Others Say</th>
       <th>City</th>
       <th>Address</th>
     </tr>
@@ -36,8 +38,8 @@
     <% @trip.trip_destinations_by_day(count).each do |destination| %>
     <tr>
       <td><%=link_to destination.name, destination_path(destination) %></td>
-      <td><%= destination.owner_rating(@trip).stars %></td>
       <td><%= destination.category %></td>
+      <td><%= destination.owner_rating(@trip).stars %></td>
       <td><%= destination.description %></td>
       <td><%= destination.location.city %></td>
       <td><%= destination.address %></td>
@@ -49,3 +51,13 @@
 <% end %>
 <% count += 1 %>
 <% end %>
+
+<ul>
+  <% @trip.reviews.each do |review|%>
+  <li><%=link_to review.reviewer.name, user_path(review.reviewer)%>:
+    <ul>
+      <li><%= review.comment%></li>
+    </ul>
+  </li>
+  <% end %>
+</ul>

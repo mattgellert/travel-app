@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ 
  [id^="pac-input-"] {
    background-color: #fff;
    font-family: Roboto;

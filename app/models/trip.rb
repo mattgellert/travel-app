@@ -56,12 +56,19 @@ class Trip < ApplicationRecord
   def destinations_attributes=(destinations)
     destinations.delete_if do |n, at| at[:name].empty? end
     destinations.each do |num, atts|
-      new_dest = Destination.create(
-        name: atts[:name],
-        description: atts[:description],
-        address: atts[:address],
-        category: atts[:category], dest_location_name: atts[:dest_location_name])
-        # byebug
+      new_dest = Destination.find_by(name: atts[:name])
+      if new_dest
+        new_dest.update(
+          description: atts[:description],
+          address: atts[:address],
+          category: atts[:category], dest_location_name: atts[:dest_location_name])
+      else
+        new_dest = Destination.create(
+          name: atts[:name],
+          description: atts[:description],
+          address: atts[:address],
+          category: atts[:category], dest_location_name: atts[:dest_location_name])
+      end
       rating = Rating.create(stars: atts[:ratings_attributes]["0"
         ][:stars], note: atts[:ratings_attributes]["0"][:note], user_id: self.user.id)
       new_dest.ratings << rating
@@ -103,6 +110,12 @@ class Trip < ApplicationRecord
       self.locations.any? do |location|
         location.city == value
       end
+    end
+  end
+
+  def total_votes
+    self.reviews.inject(0) do |sum, review|
+      sum + review.vote.to_i
     end
   end
 

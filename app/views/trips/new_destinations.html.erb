@@ -13,9 +13,7 @@
     <table>
       <thead>
         <tr>
-          <th>Name:</th>
-          <th>Description:</th>
-          <th>Location: (City, Country)</th>
+          <th>Location: (Name, City, Country)</th>
           <th>Category:</th>
           <th>Stars:</th>
           <th>Note:</th>
@@ -25,9 +23,8 @@
         <tr>
           <%= f.fields_for :destinations do |dest| %>
           <tr>
-            <td><%=dest.text_field :name %></td>
-            <td><%=dest.text_area :description %></td>
-
+          <%= dest.hidden_field :description, {id: "google_desc_#{dest_count}"}%>
+          <%= dest.hidden_field :name, {id: "google_name_#{dest_count}"} %>
           <%= dest.hidden_field :address, {id: "google_address_#{dest_count}"} %>
           <%= dest.hidden_field :dest_location_name, {id: "google_location_#{dest_count}"} %>
             <td>

@@ -37,6 +37,17 @@
       let place = autocomplete.getPlace()
       $(`#google_location_${n}`).val(place.adr_address)
       $(`#google_address_${n}`).val(place.formatted_address)
+      $(`#google_name_${n}`).val(place.name)
+
+      let rating = 0
+      let review = "something"
+      place.reviews.forEach(function(elem){
+        if(rating < elem.rating){
+          rating = elem.rating
+          review = elem.text
+        }
+      })
+      $(`#google_desc_${n}`).val(review)
     })
   }
 
