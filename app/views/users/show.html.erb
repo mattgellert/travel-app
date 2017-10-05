@@ -3,7 +3,8 @@
   <div class="empty"></div>
   <div class="name">
     <div class="name-button-wrapper">
-      <div class="user_name"><%=@user.name.capitalize%></div>
+      <div class="user_image"><img src="http://cdn.skim.gs/image/upload/v1456344012/msi/Puppy_2_kbhb4a.jpg" alt="profile picture"></div>
+      <div class="user_name"><%=@user.name%></div>
       <div class="social_button">
         <% if @user != current_user %>
           <% if @user.followers.include?(current_user) %>
@@ -14,20 +15,25 @@
         <% end %>
       </div>
     </div>
+
     <div class="trips_intensity_wrapper">
       <div class="t_trips"><span class="total_trips"><%= @user.trips.size %> Trips</span></div>
       <div class="u_intensity"><span class="user_intensity"><%= User.intensity_level(@user.average_intensity) %> Traveler</span></div>
     </div>
+
     <div class="followers_wrapper">
     <%= link_to "#{@user.num_of_followers} followers", followers_path(@user)  %> &nbsp;<%= link_to "following #{@user.num_of_followees}", followees_path(@user)  %>
     </div>
+
   </div>
   <div class="empty"></div>
 </div>
+
 <!-- Trips Section -->
 <hr>
 <h2 class="trip_header">Recent Trips</h2>
 <% @trips = @user.sort_by_recent_trips(@user.trips) %>
+
 <% @trips.each do |trip| %>
   <div class="listing_container">
     <div class="side_empty"></div>
@@ -48,13 +54,14 @@
             &#128293;
             <% end %>
           </p>
+
           <p class="trip_deets">Blurb: <%= trip.blurb %></p>
           <p class="trip_deets">Cities:
             <% trip.locations.each do |location| %>
               <%= location.city %>,
             <% end %>...
           </p>
-          <p class="trip_deets">Some Destinations:
+          <p class="trip_deets destination_deets">Some Destinations:
             <% trip.first_three_destinations.each do |dest| %>
               <%= link_to dest.name, destination_path(dest) %>,
             <% end %>...
