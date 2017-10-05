@@ -125,6 +125,7 @@ span.trip_user_name a:hover {
 .title_container {
   display: flex;
   flex-direction: row;
+  font-family: 'Lucida Grande';
 }
 
 .title_container .title_empty {
@@ -133,4 +134,256 @@ span.trip_user_name a:hover {
 
 .title_container .title_child {
   flex: 1;
+}
+
+.title_child .title_header {
+  font-family: 'SignPainter-HouseScript';
+  font-size: 75px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 30px;
+}
+.title_child .title_user_child {
+  font-family: 'SignPainter-HouseScript';
+  font-size: 35px;
+  color: #848484;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+//Trip Summary Section
+
+.trip_summary_container {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Lucida Grande';
+}
+
+.trip_summary_empty {
+  flex: 0.32;
+}
+
+.trip_summary_info {
+  flex: 0.8;
+}
+
+.trip_summary_vote {
+  flex: 0.4;
+}
+
+.summary_key {
+  font-weight: bold;
+}
+
+span.up_vote_arrow {
+  color: green;
+}
+
+span.down_vote_arrow {
+  color: red;
+}
+
+//Trip Summary Table
+.it_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.it_empty {
+  flex: 1;
+}
+
+.it_table {
+  flex: 4;
+}
+
+
+.it_table h3 {
+  font-size: 25px;
+  font-family: 'Lucida Grande';
+  padding-left: 10px;
+}
+
+table {
+  width:100%;
+  table-layout: fixed;
+  font-family: 'Lucida Grande';
+  padding-bottom: 20px;
+}
+
+.tbl-header {
+  background-color: rgba(255,255,255,0.3);
+}
+
+th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 15px;
+  color: black;
+  text-transform: uppercase;
+  background-color: #F2FCFE;
+}
+
+.tbl-content {
+  // height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+td {
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 15px;
+  color: black;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+
+//Trip Reviews Section
+
+.reviews_container {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Lucida Grande';
+}
+
+.reviews_empty {
+  flex: 1;
+}
+
+.reviews {
+  flex: 4;
+}
+
+div.user_image {
+  margin: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.user_image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+h3.reviews_title {
+  font-size: 25px;
+  font-family: 'Lucida Grande';
+  padding-left: 10px;
+}
+
+.each_review_section_container {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 5px;
+}
+
+.review_comment {
+  align-self: center;
+}
+
+.review_comment .review_user_name {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.review_comment .review_user_name:hover {
+  text-decoration: underline;
+}
+
+.review_comment a.rev_note {
+  text-decoration: none;
+  color: #28C3ED;
+}
+
+.review_comment a.rev_note:hover {
+  text-decoration: underline;
+}
+
+//Buttons
+
+
+.trip_change_button {
+    background-color: #28C3ED;
+    border: 1px solid #28C3ED;
+    font-family: 'Lucida Grande';
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.trip_change_button:hover {
+  background-color: white;
+  color: #28C3ED;
+}
+
+
+//Rating Show Circles Section (25C9 is full, 25D0 is half, 25CE is none)
+span.dest_rating_50:after {
+  content: "\25C9\25C9\25C9\25C9\25C9";
+  color: #00a680;
+}
+
+span.dest_rating_45:after {
+  content: "\25C9\25C9\25C9\25C9\25D0";
+  color: #00a680;
+}
+
+span.dest_rating_40:after {
+  content: "\25C9\25C9\25C9\25C9\25CE";
+  color: #00a680;
+}
+
+span.dest_rating_35:after {
+  content: "\25C9\25C9\25C9\25D0\25CE";
+  color: #00a680;
+}
+
+span.dest_rating_30:after {
+  content: "\25C9\25C9\25C9\25CE\25CE";
+  color: #00a680;
+}
+
+span.dest_rating_25:after {
+  content: "\25C9\25C9\25D0\25CE\25CE";
+  color: #00a680;
+}
+
+span.dest_rating_20:after {
+  content: "\25C9\25C9\25CE\25CE\25CE";
+  color: #00a680;
+}
+
+span.dest_rating_15:after {
+  content: "\25C9\25D0\25CE\25CE\25CE";
+  color: #00a680;
+}
+
+span.dest_rating_10:after {
+  content: "\25C9\25CE\25CE\25CE\25CE";
+  color: #00a680;
+}
+
+span.dest_rating_5:after {
+  content: "\25D0\25CE\25CE\25CE\25CE";
+  color: #00a680;
+}
+
+span.dest_rating_0:after {
+  content: "\25CE\25CE\25CE\25CE\25CE";
+  color: #00a680;
 }

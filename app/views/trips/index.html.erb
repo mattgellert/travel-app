@@ -16,23 +16,6 @@
 
 <!-- Show All Trips Section -->
 
-<!-- <ul>
-<% @trips.each do |trip| %>
-  <li><%=link_to trip.title, trip_path(trip) %></li>
-    <ul>
-      <li>By: <%= trip.user.name %></li>
-      <li>Total Days: <%=trip.trip_duration%> | Intensity: <%=trip.intensity%></li>
-      <li>Blurb: <%= trip.blurb %></li>
-      <li>Some Destinations:
-        <% trip.first_three_destinations.each do |dest| %>
-          <%= link_to dest.name, destination_path(dest) %>,
-        <% end %>...
-      </li>
-    </ul>
-
-<% end %>
-</ul> -->
-
 <hr>
 <h2 class="trip_header">Trips Feed</h2>
 
@@ -40,7 +23,7 @@
   <div class="listing_container">
     <div class="side_empty"></div>
     <div class="listing_details">
-      <div class="trip_title"><%=trip.title%> | <span class="trip_user_name"><%=link_to trip.user.name.capitalize, user_path(trip.user)%></span></div>
+      <div class="trip_title"><%=trip.title%> | <span class="trip_user_name"><%=link_to trip.user.name, user_path(trip.user)%></span></div>
           <p>
             <% if trip.total_votes.to_i >= 0 %>
             <span class="up_vote_arrow">

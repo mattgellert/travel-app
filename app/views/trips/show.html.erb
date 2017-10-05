@@ -3,75 +3,117 @@
 <div class="title_container">
   <div class="title_empty"></div>
   <div class="title_child">
-    <h1><%= @trip.title %><img class="header-logo" src="/travelbug2_hollow_black.svg" width="15px"></h1>
+    <div class="title_header"><%= @trip.title %><img class="header-logo" src="/travelbug2_hollow_black.svg" width="15px"></div>
     <div class="title_user_child">By <%= @trip.user.name %></div>
   </div>
   <div class="title_empty"></div>
 </div>
 
-<% if @trip.user == current_user %>
-  <%= link_to "Edit Trip", edit_trip_path(@trip)%>
-<% end %>
+<hr>
+
 <% days = @trip.trip_duration %>
 
-<hr>
-
-<h3>By <%= @trip.user.name %></h3>
-<h3>Date: <%= @trip.start_date %> - <%= @trip.end_date %></h3>
-<h3>Days: <%= days %></h3>
-<h3>Key Cities:
-
-  <ul>
-    <% @trip.locations.each do |location| %>
-    <li><%= location.make_location_name %></li>
+<!-- Trip Summary Info -->
+<div class="trip_summary_container">
+<div class="trip_summary_empty"></div>
+<div class="trip_summary_info">
+  <p><span class="summary_key">Date: </span><%= @trip.start_date %> - <%= @trip.end_date %></p>
+  <p><span class="summary_key">Key Cities:</span>
+      <% @trip.locations.each do |location| %>
+      <%= location.make_location_name %>,
+      <% end %>...
+  </p>
+  <p><span class="summary_key">Intensity: </span>
+    <% @trip.intensity.times do %>
+    &#128293;
     <% end %>
-  </ul>
-</h3>
-<h3>Intensity: <%= @trip.intensity %></h3>
-<h3>Vote Trending: <%= @trip.total_votes%></h3>
-<%= link_to "Add A Review", new_trip_review_path(@trip) %>
+  </p>
+</div>
+<div class="trip_summary_vote">
+  <p>
+    <% if @trip.total_votes.to_i >= 0 %>
+    <span class="up_vote_arrow">
+    Trending: &#8679;  <%= @trip.total_votes %> Votes
+    <% else %>
+    <span class="down_vote_arrow">
+    Trending: &#8681;  <%= @trip.total_votes %> Votes</lp>
+    <% end %>
+    </span>
+  </p>
+  <p><%= link_to "Add Review", new_trip_review_path(@trip), class: "trip_change_button" %></p>
+  <p><% if @trip.user == current_user %>
+    <%= link_to "Edit Trip", edit_trip_path(@trip), class: "trip_change_button"%>
+  <% end %></p>
+</div>
+<div class="trip_summary_empty"></div>
+</div>
+
 
 <hr>
 
-<% count = 1 %>
-<% days.times do %>
-<% if !@trip.trip_destinations_by_day(count).empty? %>
-  <h3>Day <%=count%></h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Rating</th>
-        <!-- <th>What Others Say</th> -->
-        <th>City</th>
-        <th>Address</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @trip.trip_destinations_by_day(count).each do |destination| %>
-      <tr>
-        <td><%=link_to destination.name, destination_path(destination) %></td>
-        <td><%= destination.category %></td>
-        <td><%= destination.owner_rating(@trip).try(:stars) %></td>
-        <!-- <td><%= destination.description %></td> -->
-        <td><%= destination.location.city %></td>
-        <td><%= destination.address %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <hr>
-<% end %>
-<% count += 1 %>
-<% end %>
+<!-- Itinerary Section -->
+<div class="it_container">
+  <div class="it_empty"></div>
+  <div class="it_table">
+    <% count = 1 %>
+    <% days.times do %>
+    <% if !@trip.trip_destinations_by_day(count).empty? %>
+      <h3>DAY <%=count%></h3>
 
-<ul>
+      <table cellpadding="0" cellspacing="0" border ="0">
+          <div class="tbl-header">
+          <thead>
+            <tr>
+              <th width="200">Name</th>
+              <th width="120">Type</th>
+              <th width="120">Rating</th>
+              <!-- <th>What Others Say</th> -->
+              <th width="120">City</th>
+              <th width="400">Address</th>
+            </tr>
+          </thead>
+      </div>
+      <div class="tbl-content">
+          <tbody>
+            <% @trip.trip_destinations_by_day(count).each do |destination| %>
+            <tr>
+              <td><%=link_to destination.name, destination_path(destination) %></td>
+              <td><%= destination.category %></td>
+              <td><span class="dest_rating_<%=destination.owner_rating(@trip).try(:stars)%>">
+              </span></td>
+              <!-- <td><%= destination.description %></td> -->
+              <td><%= destination.location.city %></td>
+              <td><%= destination.address %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </div>
+      </table>
+    <% end %>
+    <% count += 1 %>
+    <% end %>
+  </div>
+  <div class="it_empty"></div>
+</div>
+<hr>
+
+<!-- Reviews Section -->
+<div class="reviews_container">
+  <div class="reviews_empty"></div>
+  <div class="reviews">
+  <h3 class="reviews_title">Reviews</h3>
   <% @trip.reviews.each do |review|%>
-  <li><%=link_to review.reviewer.name, user_path(review.reviewer)%>:
-    <ul>
-      <li><%= link_to review.comment, trip_review_path(@trip, review)%></li>
-    </ul>
-  </li>
+  <div class="each_review_section_container">
+  <div class="user_image"><img src="http://cdn.skim.gs/image/upload/v1456344012/msi/Puppy_2_kbhb4a.jpg" alt="profile picture"></div>
+  <div class="review_comment">
+  <%= link_to review.reviewer.name, user_path(review.reviewer), class: "review_user_name"%> <br>
+  <%= link_to review.comment, trip_review_path(@trip, review), class: "rev_note"%>
+  </div>
+  </div>
   <% end %>
-</ul>
+
+
+
+  </div>
+  <div class="reviews_empty"></div>
+</div>
