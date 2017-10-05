@@ -1,13 +1,16 @@
-<h1>Destinations</h1>
+<h1 align="center">Destinations<img class="header-logo" src="/travelbug2_hollow_black.svg" width="15px"></h1>
 
-<hr>
 <!-- Search Bar -->
-<h4>Search Destination</h4>
+
 <%= form_tag destination_search_path, method: "get", class: 'form-style-8' do %>
+  <strong style="font-size: 20px;">Search Destinations</strong>
+
+  <br></br>
+
   Name: <%= text_field_tag 'search[qname]' %> <br>
   Location: <%= text_field_tag 'search[qlocation]'%> <br>
   Category: <%= select_tag 'search[qcategory]', options_for_select([nil]+Destination.category)%> <br>
-  <%= submit_tag "Search" %>
+  <%= submit_tag "Search", style: "float: right;" %>
 <% end %>
 <hr>
 <ol>
