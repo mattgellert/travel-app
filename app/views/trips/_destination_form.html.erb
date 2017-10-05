@@ -1,22 +1,22 @@
 <input id="trip_duration" value="<%= trip.trip_duration * 3 %>" hidden>
 
-<%= form_for trip, url: create_destinations_path, html: {class: "form-style-8"} do |f| %>
+<h1 align="center">Add Destinations<img class="header-logo" src="/travelbug2_hollow_black.svg" width="15px"></h1>
+
+<%= form_for trip, url: create_destinations_path, html: {class: "form-style-9", style: "padding-top: 10px;"} do |f| %>
   <% count = 1%>
   <% dest_count = 1 %>
   <% trip.trip_duration.times do %>
 
-    <h1>Day <%=count%></h1>
-
-    <hr>
+    <h3 align="center" style="font-size: 40px;">Day <%=count%></h1>
 
     <!-- form to fill in the table -->
-    <table>
+    <table align="center">
       <thead>
         <tr>
-          <th>Location: (Name, City, Country)</th>
-          <th>Category:</th>
-          <th>Stars:</th>
-          <th>Note:</th>
+          <th>Location</th>
+          <th>Category</th>
+          <th>Stars</th>
+          <th>Note</th>
         </tr>
       </thead>
       <tbody>
@@ -27,25 +27,28 @@
             <%= f.fields_for :destinations, destination do |dest| %>
             <tr>
             <%= dest.hidden_field :description, {id: "google_desc_#{dest_count}"}%>
+            <%= dest.hidden_field :photo_url_1, {id: "google_photo_0_#{dest_count}"}%>
+            <%= dest.hidden_field :photo_url_2, {id: "google_photo_1_#{dest_count}"}%>
+            <%= dest.hidden_field :photo_url_3, {id: "google_photo_2_#{dest_count}"}%>
             <%= dest.hidden_field :name, {id: "google_name_#{dest_count}"} %>
             <%= dest.hidden_field :address, {id: "google_address_#{dest_count}"} %>
             <%= dest.hidden_field :dest_location_name, {id: "google_location_#{dest_count}"} %>
             <!-- input -->
-              <td>
+              <td style="padding-right: 20px;">
                 <div class="pac-card" id="pac-card-<%=dest_count%>">
                   <div id="pac-container">
-                    <input id="pac-input-<%= dest_count %>" type="text" placeholder="Enter a location" value="<%= destination.name %>">
+                    <input id="pac-input-<%= dest_count %>" type="text" placeholder="Enter a location" value="<%= destination.name %>", style="margin-right: 50px;">
                   </div>
                 </div>
                 <div id="map"></div>
                 <% dest_count += 1 %>
               </td>
-              <td><%=dest.collection_select :category, Destination.category, :to_s, :to_s %></td>
+              <td style="padding-right: 20px; width: 120px;"><%=dest.collection_select :category, Destination.category, :to_s, :to_s%></td>
 
               <% rating = destination.user_destination_rating(current_user) %>
               <%= dest.fields_for :ratings, rating do |rating| %>
-                <td><%=rating.range_field :stars, in: 1..5 %></td>
-                <td><%=rating.text_area :note%></td>
+                <td style="padding-right: 20px;"><%=rating.range_field :stars, in: 1..5 %></td>
+                <td style="padding-right: 20px;"><%=rating.text_area :note%></td>
               <% end %>
 
 
@@ -54,6 +57,8 @@
             <% end %>
 
           <% end %>
+
+
           <!-- end loop -->
         </tr>
       </tbody>
@@ -61,5 +66,5 @@
     <% count += 1 %>
   <% end %>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCozNzitv9TtJWxxAilV3PgGAtSobGc3vM&libraries=places&callback=initialize" async defer></script>
-  <%= f.submit "Hope this works" %>
+  <%= f.submit "Hope this works", style: "float: right;" %>
 <% end %>

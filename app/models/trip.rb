@@ -66,13 +66,21 @@ class Trip < ApplicationRecord
           new_dest.update(
             description: atts[:description],
             address: atts[:address],
-            category: atts[:category], dest_location_name: atts[:dest_location_name])
+            category: atts[:category],
+            dest_location_name: atts[:dest_location_name],
+            photo_url_1: atts[:photo_url_1],
+            photo_url_2: atts[:photo_url_2],
+            photo_url_3: atts[:photo_url_3])
         else
           new_dest = Destination.create(
             name: atts[:name],
             description: atts[:description],
             address: atts[:address],
-            category: atts[:category], dest_location_name: atts[:dest_location_name])
+            category: atts[:category],
+            dest_location_name: atts[:dest_location_name],
+            photo_url_1: atts[:photo_url_1],
+            photo_url_2: atts[:photo_url_2],
+            photo_url_3: atts[:photo_url_3])
         end
         rating = Rating.find_or_create_by(stars: atts[:ratings_attributes]["0"
           ][:stars], note: atts[:ratings_attributes]["0"][:note], user_id: self.user.id)

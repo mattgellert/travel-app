@@ -1,3 +1,32 @@
 // Place all the styles related to the Trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.listing_container {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0;
+}
+.side_empty {
+  flex: 0.8;
+}
+.listing_details {
+  flex: 2;
+  padding: 20px 10px;
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  background-color: #F2FCFE;
+  font-family: 'Lucida Grande';
+}
+.trip_deets {
+  color: #7f7e7e;
+}
+.trip_deets a {
+  color: #28C3ED;
+  text-decoration: none;
+}
+.trip_deets a:hover {
+  text-decoration: underline;
+}
+.trip_deets a:visited {
+  color: #300363;
+}

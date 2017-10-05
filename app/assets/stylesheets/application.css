@@ -14,17 +14,15 @@
  *= require_self
  */
 
-h1 {
-  font-size: 75px;
-}
-
 .header-logo {
   margin-left: 10px;
 }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2 {
     font-family: 'SignPainter-HouseScript';
+    font-size: 75px;
   }
+
   .form-style-8{
       font-family: 'Lucida Grande', arial, sans;
       width: 500px;
@@ -97,6 +95,81 @@ h1 {
   }
   .form-style-8 input[type="button"]:hover,
   .form-style-8 input[type="submit"]:hover {
+     background-color: white;
+     color: #28C3ED;
+ }
+  .form-style-9{
+      font-family: 'Lucida Grande', arial, sans;
+      width: 800px;
+      padding: 30px;
+      padding-bottom: 60px;
+      background: #FFFFFF;
+      margin: 50px auto;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+      -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+      -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+  }
+  .form-style-9 h2{
+      background: #4D4D4D;
+      text-transform: uppercase;
+      font-family: 'Lucida Grande', sans-serif;
+      color: #797979;
+      font-size: 18px;
+      font-weight: 100;
+      padding: 20px;
+      margin: -30px -30px 30px -30px;
+  }
+  /*.hide {
+   opacity: 0;
+ }*/
+  .form-style-9 input[type="text"],
+  .form-style-9 input[type="date"],
+  .form-style-9 input[type="datetime"],
+  .form-style-9 input[type="email"],
+  .form-style-9 input[type="number"],
+  .form-style-9 input[type="search"],
+  .form-style-9 input[type="time"],
+  .form-style-9 input[type="url"],
+  .form-style-9 input[type="password"],
+  .form-style-9 textarea,
+  .form-style-9 select
+  {
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      outline: none;
+      display: block;
+      width: 100%;
+      padding: 7px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      background: transparent;
+      margin-bottom: 10px;
+      font: 16px Arial, Helvetica, sans-serif;
+      height: 45px;
+  }
+  .form-style-9 textarea{
+      resize:none;
+      overflow: hidden;
+  }
+  .form-style-9 input[type="button"],
+  .form-style-9 input[type="submit"] {
+    background-color: #28C3ED; /* Green */
+    border:1px solid #28C3ED;
+    color: white;
+    padding: 10px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 0px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .form-style-9 input[type="button"]:hover,
+  .form-style-9 input[type="submit"]:hover {
      background-color: white;
      color: #28C3ED;
  }
