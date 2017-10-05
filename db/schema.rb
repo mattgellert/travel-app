@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(version: 20171002154023) do
     t.string "address"
     t.string "category"
     t.integer "location_id"
+    t.string "photo_url_1"
+    t.string "photo_url_2"
+    t.string "photo_url_3"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

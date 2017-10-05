@@ -67,7 +67,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :days, :blurb, :intensity, :user_id, :start_date, :end_date,location_names: [], destinations_attributes: [:id, :name, :description, :address, :category, :day, :dest_location_name, ratings_attributes:{}])
+    params.require(:trip).permit(:title, :days, :blurb, :intensity, :user_id, :start_date, :end_date,location_names: [], destinations_attributes: [:id, :name, :description, :address, :category, :day, :dest_location_name, :photo_url_1,  :photo_url_2,  :photo_url_3, ratings_attributes:{}])
   end
 
   def search_params
