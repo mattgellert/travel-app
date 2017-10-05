@@ -150,4 +150,7 @@ class Trip < ApplicationRecord
     destinations
   end
 
+  #validations
+
+
 end

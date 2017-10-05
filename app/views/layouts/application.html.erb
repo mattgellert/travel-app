@@ -2,26 +2,36 @@
 <html>
   <head>
     <title>TravelApp</title>
-
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-
-
+    <style>
+    .navbar {
+      font-family: 'Comic Sans MS';'
+    }
+    </style>
     <% if session[:user_id] %>
-      <div class="topnav" id="myTopnav">
-        <a href="/">Welcome</a>
-        <a href="/trips">Trips</a>
-        <a href="/destinations">Destinations</a>
-        <a href="/users/<%=session[:user_id]%>" style="float: right;">Profile</a>
+      <div class="navbar">
+        <a href="/">Home</a>
+        <div class="dropdown">
+          <button class="dropbtn">Trips
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/trips">Browse Trips</a>
+            <a href="/trips/new">New Trip</a>
+            <a href="/users/<%=session[:user_id]%>">My Trips</a>
+          </div>
+        </div>
+        <a href="/destinations">Desintations</a>
         <a href="/logout" style="float: right;">Logout</a>
+        <a href="/users/<%=session[:user_id]%>" style="float: right;">My Profile</a>
       </div>
     <% else %>
-      <div class="topnav" id="myTopnav">
-        <a href="/">Welcome</a>
+      <div class="navbar">
+        <a href="/">Home</a>
         <a href="/signup" style="float: right;">Sign Up</a>
         <a href="/login" style="float: right;">Login</a>
       </div>

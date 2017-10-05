@@ -3,7 +3,7 @@
 <hr>
 <!-- Search Bar -->
 <h4>Search Destination</h4>
-<%= form_tag destination_search_path, method: "get" do %>
+<%= form_tag destination_search_path, method: "get", class: 'form-style-8' do %>
   Name: <%= text_field_tag 'search[qname]' %> <br>
   Location: <%= text_field_tag 'search[qlocation]'%> <br>
   Category: <%= select_tag 'search[qcategory]', options_for_select([nil]+Destination.category)%> <br>

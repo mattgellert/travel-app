@@ -1,12 +1,13 @@
 <h1>Trips</h1>
 
 <!-- Search Bar -->
-<h4>Search Trips</h4>
-<%= form_tag trip_search_path, method: "get" do %>
+
+<%= form_tag trip_search_path, method: "get", class: 'form-style-8' do %>
+  <h4>Search Trips</h4>
   Location: <%= text_field_tag 'search[location]'%> <br>
   Days: <%= number_field_tag 'search[days]'%> <br>
   All Friends?: <%= check_box_tag 'search[qfriends]' %>
-  <%= submit_tag "Search" %>
+  <%= submit_tag "Search", style: "float: right;" %>
 <% end %>
 
 <ul>
