@@ -1,12 +1,15 @@
-<h1>Trips</h1>
+<h1 align="center">Trips<img class="header-logo" src="/travelbug2_hollow_black.svg" width="15px"></h1>
 
 <!-- Search Bar -->
 
 <%= form_tag trip_search_path, method: "get", class: 'form-style-8' do %>
-  <h4>Search Trips</h4>
-  Location: <%= text_field_tag 'search[location]'%> <br>
-  Days: <%= number_field_tag 'search[days]'%> <br>
-  All Friends?: <%= check_box_tag 'search[qfriends]' %>
+  <span style="font-weight:bold; font-size:20px;">Search Trips</span>
+
+  <br></br>
+
+  Location <%= text_field_tag 'search[location]'%><br>
+  Days <%= number_field_tag 'search[days]'%><br>
+  All Friends? <%= check_box_tag 'search[qfriends]'%>
   <%= submit_tag "Search", style: "float: right;" %>
 <% end %>
 
