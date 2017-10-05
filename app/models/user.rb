@@ -29,14 +29,12 @@ class User < ApplicationRecord
   end
 
   def self.intensity_level(n)
-    if n <= 2
+    if n <= 3
       "Chill"
-    elsif n == 5
+    elsif n >= 4
       "ON FIRE"
-    elsif n == 4
-      "Pretty intense"
-    else
-      "OK"
+    elsif n >= 3
+      "Pretty Intense"
     end
   end
 end

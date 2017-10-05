@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   before_action :logged_in
 
   def index
-    @trips = Trip.all
+    @trips = Trip.sort_trips_by_votes(Trip.all)
   end
 
   def new

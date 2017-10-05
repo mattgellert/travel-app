@@ -153,4 +153,11 @@ class Trip < ApplicationRecord
     destinations
   end
 
+  def self.sort_trips_by_votes(trips)
+    trips.sort_by do |trip|
+      trip.total_votes * -1
+    end
+  end
+
+
 end
