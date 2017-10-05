@@ -14,7 +14,8 @@
     </style>
     <% if session[:user_id] %>
       <div class="navbar">
-        <a href="/">Home</a>
+
+        <a class="img button" href="/"><img src="/travelbug2_full.svg" width="25px"></a>
         <div class="dropdown">
           <button class="dropbtn">Trips
             <i class="fa fa-caret-down"></i>
@@ -31,7 +32,7 @@
       </div>
     <% else %>
       <div class="navbar">
-        <a href="/">Home</a>
+        <a class="img button" href="/"><img src="/travelbug2_full.svg" width="25px"></a>
         <a href="/signup" style="float: right;">Sign Up</a>
         <a href="/login" style="float: right;">Login</a>
       </div>

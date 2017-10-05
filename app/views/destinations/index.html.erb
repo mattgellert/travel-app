@@ -1,24 +1,36 @@
-<h1>Destinations</h1>
+<h1 align="center">Destinations<img class="header-logo" src="/travelbug2_hollow_black.svg" width="15px"></h1>
 
-<hr>
 <!-- Search Bar -->
-<h4>Search Destination</h4>
+
 <%= form_tag destination_search_path, method: "get", class: 'form-style-8' do %>
+  <strong style="font-size: 20px;">Search Destinations</strong>
+
+  <br></br>
+
   Name: <%= text_field_tag 'search[qname]' %> <br>
   Location: <%= text_field_tag 'search[qlocation]'%> <br>
   Category: <%= select_tag 'search[qcategory]', options_for_select([nil]+Destination.category)%> <br>
-  <%= submit_tag "Search" %>
+  <%= submit_tag "Search", style: "float: right;" %>
 <% end %>
 <hr>
-<ol>
-<% @destinations.each do |dest| %>
-  <li><%=link_to dest.name, destination_path(dest) %></li>
-    <ul>
-      <li>Avg Rating: <%= dest.dest_average_rating %></li>
-      <li>Description: <%= dest.description %></li>
-      <li>Address: <%= dest.address %></li>
-      <li>Category: <%= dest.category %></li>
-    </ul>
 
+<!-- All Destinations Section -->
+
+<% @destinations.each do |dest| %>
+<div class="listing_container">
+  <div class="side_empty"></div>
+  <div class="listing_details">
+    <div class="dest_title"><p><%=dest.name%></p></div>
+    <p> <span class="dest_rating_<%=dest.dest_average_rating%>">
+    </span>&nbsp;&nbsp;<%= dest.ratings.size %> Review(s) </p>
+    <p class="trip_deets">What Peeps Say: <%= dest.description %></p>
+    <p class="trip_deets">Address: <%= dest.address %></p>
+  </div>
+  <div class="more_info">
+    <div class="button_empty"></div>
+    <div class="button_area"><%=link_to "More Info", destination_path(dest), class: "more_info_button" %></div>
+    <div class="button_empty"></div>
+  </div>
+  <div class="side_empty"></div>
+</div>
 <% end %>
-</ol>

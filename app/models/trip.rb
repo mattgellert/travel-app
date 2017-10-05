@@ -19,6 +19,9 @@ class Trip < ApplicationRecord
      elsif location.include?("region")#regex finds region
        city = location.split("span>").delete_if{|y| !y.include?("region")}[0].chomp("</").split(">")[-1]
        country = location.split("span>").delete_if{|y| !y.include?("country-name")}[0].chomp("</").split(">")[-1]
+     elsif location.include?(", ") # added to account for location update #
+       city = location.city
+       country = location.country #########################################
      else
        city = nil
        country = nil
@@ -109,7 +112,7 @@ class Trip < ApplicationRecord
       end
     else
       Trip.all.select do |trip|
-        trip.day_criteria_match?(search_params[:days]) && trip.location_criteria_match?(search_params[:location])
+        trip.day_criteria_match?(search_params[:days]) && trip.location_criteria_match?(search_params[:location].capitalize)
       end
     end
   end
@@ -150,7 +153,11 @@ class Trip < ApplicationRecord
     destinations
   end
 
-  #validations
+  def self.sort_trips_by_votes(trips)
+    trips.sort_by do |trip|
+      trip.total_votes * -1
+    end
+  end
 
 
 end

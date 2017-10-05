@@ -4,7 +4,7 @@
   <div class="name">
     <div class="name-button-wrapper">
       <div class="user_image"><img src="http://cdn.skim.gs/image/upload/v1456344012/msi/Puppy_2_kbhb4a.jpg" alt="profile picture"></div>
-      <div class="user_name"><%=@user.name.capitalize%></div>
+      <div class="user_name"><%=@user.name%></div>
       <div class="social_button">
         <% if @user != current_user %>
           <% if @user.followers.include?(current_user) %>
@@ -61,7 +61,7 @@
               <%= location.city %>,
             <% end %>...
           </p>
-          <p class="trip_deets">Some Destinations:
+          <p class="trip_deets destination_deets">Some Destinations:
             <% trip.first_three_destinations.each do |dest| %>
               <%= link_to dest.name, destination_path(dest) %>,
             <% end %>...

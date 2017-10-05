@@ -1,3 +1,26 @@
+<style>
+.two-col {
+    overflow: hidden;/* Makes this div contain its floats */
+}
+
+.two-col .col1,
+.two-col .col2 {
+    width 49%;
+}
+
+.two-col .col1 {
+    float: left;
+}
+
+.two-col .col2 {
+    float: right;
+}
+
+.two-col label {
+    display: block;
+}
+</style>
+
 <input id="trip_duration" value="3" hidden>
 
 <%= form_for trip, html: {class: "form-style-8"} do |f| %>
@@ -10,21 +33,23 @@
   <%= f.text_field :blurb %>
 
   <br>
+  <div class="two-col">
+    <div class="col1">
+      <%= f.label :start_date %>
+      <%= f.date_field :start_date %>
+    </div>
 
-  <%= f.label :start_date %>
-  <%= f.date_field :start_date %>
-
-  <br>
-
-  <%= f.label :end_date %>
-  <%= f.date_field :end_date %>
-
+    <div class="col2">
+      <%= f.label :end_date %>
+      <%= f.date_field :end_date %>
+    </div>
+  </div>
   <br>
 
   <%= f.label :intensity %>
   <%= f.range_field :intensity, in: 1..5 %>
 
-  <br>
+  <br></br>
 
 
   <label>Locations:</label>

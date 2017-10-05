@@ -16,8 +16,10 @@ class Destination < ApplicationRecord
 
   def dest_average_rating
     sum = self.ratings.sum(&:stars)
-    sum.to_f / self.ratings.size
+    rating = sum.to_f / self.ratings.size
+    ((rating * 2).round / 2)*10.round
   end
+
 
   def dest_location_name=(name)
     if name.include?("locality")#regex finds locality
