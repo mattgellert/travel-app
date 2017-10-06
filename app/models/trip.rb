@@ -13,19 +13,21 @@ class Trip < ApplicationRecord
   def location_names=(locations) #2
    locations.delete_if {|location| location.empty? || location.nil?}
    locations.each do |location|
-     if location.include?("locality")#regex finds locality
+     if location.include?("locality")
        city = location.split("span>").delete_if{|y| !y.include?("locality")}[0].chomp("</").split(">")[-1]
        country = location.split("span>").delete_if{|y| !y.include?("country-name")}[0].chomp("</").split(">")[-1]
-     elsif location.include?("region")#regex finds region
+     elsif location.include?("region")
        city = location.split("span>").delete_if{|y| !y.include?("region")}[0].chomp("</").split(">")[-1]
        country = location.split("span>").delete_if{|y| !y.include?("country-name")}[0].chomp("</").split(">")[-1]
-     elsif location.include?(", ") # added to account for location update #
+     elsif location.include?("country-name")
+       city = "City N/A"
+       country = location.split("span>").delete_if{|y| !y.include?("country-name")}[0].chomp("</").split(">")[-1]
+     elsif location.include?(", ")
        city = location.city
-       country = location.country #########################################
+       country = location.country
      else
        city = nil
        country = nil
-      #add error/validation
      end
      self.locations << Location.find_or_create_by(city: city, country: country)
    end

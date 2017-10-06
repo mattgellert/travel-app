@@ -1,4 +1,16 @@
 <h1 align="center">Create a Trip<img class="header-logo" src="/travelbug3_hollow_blackish.svg" width="15px"></h1>
 
+<% if @trip.errors.any? %>
+  <div id="error_explanation" align="center" style="color: red;">
+    <h3>
+      <%= pluralize(@trip.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h3>
+
+    <% @trip.errors.full_messages.each do |msg| %>
+      <%= msg %><br>
+    <% end %>
+  </div>
+<% end %>
 
 <%= render partial: 'trip_form', locals: {trip: @trip} %>

@@ -249,6 +249,7 @@ span.trip_user_name a:hover {
   font-weight: bold;
   text-align: center;
   padding-top: 30px;
+  padding-bottom: 12px;
 }
 .title_child .title_user_child {
   font-family: 'SignPainter-HouseScript';
@@ -492,6 +493,36 @@ span.dest_rating_5:after {
   content: "\25D0\25CE\25CE\25CE\25CE";
   color: #00a680;
 }
+
+span.dest_rating_0:after {
+  content: "\25CE\25CE\25CE\25CE\25CE";
+  color: #00a680;
+}
+span.dest_rating_i5:after {
+  content: "\25C9\25C9\25C9\25C9\25C9";
+  color: #00a680;
+}
+
+span.dest_rating_i4:after {
+  content: "\25C9\25C9\25C9\25C9\25CE";
+  color: #00a680;
+}
+
+span.dest_rating_i3:after {
+  content: "\25C9\25C9\25C9\25CE\25CE";
+  color: #00a680;
+}
+
+span.dest_rating_i2:after {
+  content: "\25C9\25C9\25CE\25CE\25CE";
+  color: #00a680;
+}
+
+span.dest_rating_i1:after {
+  content: "\25C9\25CE\25CE\25CE\25CE";
+  color: #00a680;
+}
+
 
 span.dest_rating_0:after {
   content: "\25CE\25CE\25CE\25CE\25CE";
