@@ -19,6 +19,9 @@
 <% @destinations.each do |dest| %>
 <div class="listing_container">
   <div class="side_empty"></div>
+  <div class="listing_photo">
+    <img class="listing_image" src="<%=dest.try(:photo_url_1)%>">
+  </div>
   <div class="listing_details">
     <div class="dest_title"><p><%=dest.name%></p></div>
     <p> <span class="dest_rating_<%=dest.dest_average_rating%>">

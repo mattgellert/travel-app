@@ -11,6 +11,25 @@
   flex: 0.8;
 }
 
+.listing_container .listing_photo {
+  flex: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+}
+
+.listing_photo img.listing_image {
+  width: 150px;
+  height: 150px;
+  align-self: center;
+  display: flex;
+  border-radius: 50%;
+  box-shadow: 2px 1px 6px #222;
+}
+
 .listing_details {
   flex: 2;
   padding: 20px 10px;
