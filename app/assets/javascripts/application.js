@@ -39,7 +39,7 @@
       $(`#google_location_${n}`).val(place.adr_address)
       $(`#google_address_${n}`).val(place.formatted_address)
       $(`#google_name_${n}`).val(place.name)
-      
+
       var elem1 = place.photos[0]
       var elem2 = place.photos[1]
       var elem3 = place.photos[2]
