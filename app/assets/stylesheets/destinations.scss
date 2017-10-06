@@ -135,3 +135,22 @@ span.dest_rating_0:after {
   content: "\25CE\25CE\25CE\25CE\25CE";
   color: #00a680;
 }
+
+//Destination Show Page
+.destination_images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.destination_image {
+  margin: 0 10px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  box-shadow: 2px 1px 6px #222;
+}
+
+.header_above_image {
+  margin-bottom: 20px;
+}

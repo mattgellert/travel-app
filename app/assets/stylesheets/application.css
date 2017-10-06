@@ -186,7 +186,8 @@
   /* Add a black background color to the top navigation */
   .navbar {
      overflow: hidden;
-     background-color: #28C3ED;
+     /*background-color: #28C3ED;*/
+     background-color: #048aba;
      font-family: 'Lucida Grande';
  }
  .navbar a {
