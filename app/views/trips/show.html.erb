@@ -10,8 +10,9 @@
 </div>
 
 <div class="destination_images">
+  <% @destinations.length <= 3 ? x = 200 : x = 130%>
   <% @destinations.each do |destination| %>
-    <img class="destination_image" src="<%=destination.photo_url_1%>" width="130" height="130">
+    <img class="destination_image" src="<%=destination.photo_url_1%>" width="<%=x%>" height="<%=x%>">
     <% end %>
 </div>
 

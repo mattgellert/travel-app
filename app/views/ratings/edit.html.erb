@@ -1,10 +1,21 @@
+
+
 <h1 align="center">Edit Review<img class="header-logo" src="/travelbug3_hollow_blackish.svg" width="15px"></h1>
 <%= form_for [@destination, @rating],url: {controller: 'ratings', action: 'update'}, method: :patch, html: {class: "form-style-8"} do |f| %>
 <%= f.label :note %>
 <%= f.text_field :note %>
 <br>
 <%= f.label :stars %> <br>
-<%= f.range_field :stars, min: 1, max: 5%>
+<fieldset>
+  <span class="star-cb-group stars">
+    <input type="radio" id="rating-5" name="rating[stars]" value="5" /><label for="rating-5">5</label>
+    <input type="radio" id="rating-4" name="rating[stars]" value="4" /><label for="rating-4">4</label>
+    <input type="radio" id="rating-3" name="rating[stars]" value="3" /><label for="rating-3">3</label>
+    <input type="radio" id="rating-2" name="rating[stars]" value="2" /><label for="rating-2">2</label>
+    <input type="radio" id="rating-1" name="rating[stars]" value="1" /><label for="rating-1">1</label>
+    <input type="radio" id="rating-0" name="rating[stars]" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
+  </span>
+</fieldset>
 <br>
 <%= f.submit "Edit Review"%>
 <% end %>
