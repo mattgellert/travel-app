@@ -19,12 +19,11 @@ body {
 .header-logo {
   margin-left: 10px;
 }
-
   h1, h2 {
     font-family: 'SignPainter-HouseScript';
     font-size: 75px;
+    color: #09121c;
   }
-
   .form-style-8{
       font-family: 'Lucida Grande', arial, sans;
       width: 500px;
@@ -195,7 +194,7 @@ body {
  .navbar a {
      float: left;
      font-size: 16px;
-     color: white;
+     color: #eff8fc;
      text-align: center;
      padding: 14px 16px;
      text-decoration: none;
@@ -204,7 +203,7 @@ body {
  .navbar a[class="img button"] {
      float: left;
      font-size: 16px;
-     color: white;
+     color: #eff8fc;
      text-align: center;
      padding-top: 5px;
      padding-bottom: 5px;
@@ -220,7 +219,7 @@ body {
      font-size: 16px;
      border: none;
      outline: none;
-     color: white;
+     color: #eff8fc;
      padding: 14px 16px;
      background-color: inherit;
      font-family: 'Lucida Grande';
@@ -239,7 +238,7 @@ body {
  }
  .dropdown-content a {
      float: none;
-     color: white;
+     color: #eff8fc;
      padding: 12px 16px;
      text-decoration: none;
      display: block;

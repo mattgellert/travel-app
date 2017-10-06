@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get "/trips/:id/edit_destinations", to: "trips#edit_destinations", as: "edit_destinations"
   patch "/trips/:id/update_destinations", to: "trips#update_destinations", as: "update_destinations"
   resources :trips do
-    resources :reviews, only: [:new, :create, :show, :edit, :update]
+    resources :reviews, only: [:new, :create, :edit, :update]
   end
   resources :users, only: [:show, :new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

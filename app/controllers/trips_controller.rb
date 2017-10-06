@@ -62,6 +62,7 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @destinations = @trip.destinations.sample(5)
   end
 
   private

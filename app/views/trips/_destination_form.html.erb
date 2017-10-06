@@ -1,6 +1,6 @@
 <input id="trip_duration" value="<%= trip.trip_duration * 3 %>" hidden>
 
-<h1 align="center">Add Destinations<img class="header-logo" src="/travelbug2_hollow_black.svg" width="15px"></h1>
+<h1 align="center">Add Destinations<img class="header-logo" src="/travelbug3_hollow_blackish.svg" width="15px"></h1>
 
 <%= form_for trip, url: create_destinations_path, html: {class: "form-style-9", style: "padding-top: 10px;"} do |f| %>
   <% count = 1%>
@@ -48,11 +48,11 @@
               <% rating = destination.user_destination_rating(current_user) %>
               <%= dest.fields_for :ratings, rating do |rating| %>
                 <td style="padding-right: 20px;"><%=rating.range_field :stars, in: 1..5 %></td>
-                <td style="padding-right: 20px;"><%=rating.text_area :note%></td>
+                <td style="padding-right: 20px; resize: none;" data-role="none"><%=rating.text_area :note%></td>
               <% end %>
 
 
-              <td><%=dest.hidden_field :day, value: count%></td>
+              <%=dest.hidden_field :day, value: count%>
             </tr>
             <% end %>
 
@@ -66,5 +66,6 @@
     <% count += 1 %>
   <% end %>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCozNzitv9TtJWxxAilV3PgGAtSobGc3vM&libraries=places&callback=initialize" async defer></script>
-  <%= f.submit "Hope this works", style: "float: right;" %>
+  <%= f.submit "Add Destinations", style: "float: right;" %>
+  <!-- <%= f.submit "Hope this works", style: "float: right;" %> -->
 <% end %>

@@ -24,35 +24,35 @@
 <input id="trip_duration" value="3" hidden>
 
 <%= form_for trip, html: {class: "form-style-8"} do |f| %>
-  <%= f.label :title %>
+  <%= f.label :title, style: "font-weight:bold" %>
   <%= f.text_field :title %>
 
   <br>
 
-  <%= f.label :blurb %>
+  <%= f.label :blurb, style: "font-weight:bold" %>
   <%= f.text_field :blurb %>
 
   <br>
   <div class="two-col">
     <div class="col1">
-      <%= f.label :start_date %>
+      <%= f.label :start_date, style: "font-weight:bold" %>
       <%= f.date_field :start_date %>
     </div>
 
     <div class="col2">
-      <%= f.label :end_date %>
+      <%= f.label :end_date, style: "font-weight:bold" %>
       <%= f.date_field :end_date %>
     </div>
   </div>
   <br>
 
-  <%= f.label :intensity %>
-  <%= f.range_field :intensity, in: 1..5 %>
+  <%= f.label :intensity, style: "font-weight:bold" %>
+  <%= f.range_field :intensity, in: 1..5 %><br>
 
   <br></br>
 
 
-  <label>Locations:</label>
+  <label style="font-weight:bold">Locations</label><br>
   <!-- Showing existing locations -->
 
   <% locations = trip.locations.collect {|loc| loc.make_location_name} %>

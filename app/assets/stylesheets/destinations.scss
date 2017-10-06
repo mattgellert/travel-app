@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //Destination Container Section
+
 .listing_container {
   display: flex;
   flex-direction: row;
@@ -143,6 +144,7 @@ span.dest_rating_0:after {
   justify-content: center;
   align-items: center;
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .destination_image {
