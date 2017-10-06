@@ -107,7 +107,12 @@
   <div class="user_image"><img src="http://cdn.skim.gs/image/upload/v1456344012/msi/Puppy_2_kbhb4a.jpg" alt="profile picture"></div>
   <div class="review_comment">
   <%= link_to review.reviewer.name, user_path(review.reviewer), class: "review_user_name"%> <br>
-  <%= link_to review.comment, trip_review_path(@trip, review), class: "rev_note"%>
+
+    <% if review.reviewer == current_user %>
+      <%= link_to review.comment, edit_trip_review_path(@trip, review), class: "rev_note"%>
+    <% else %>
+      <span class="rev_note"><%= review.comment %></span>
+    <% end %>
   </div>
   </div>
   <% end %>

@@ -16,13 +16,14 @@
   padding: 20px 10px;
   border-bottom: 1px solid #e5e5e5;
   border-top: 1px solid #e5e5e5;
-  background-color: #F2FCFE;
+  background-color: white;
   font-family: 'Lucida Grande';
+
 }
 
 .more_info {
   flex: 0.7;
-  background-color: #F2FCFE;
+  background-color: white;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #e5e5e5;
@@ -33,6 +34,7 @@
   flex: 1.5;
   background-color: #F2FCFE;
 }
+
 
 .button_area {
   flex: 1;
@@ -126,6 +128,7 @@ span.trip_user_name a:hover {
   display: flex;
   flex-direction: row;
   font-family: 'Lucida Grande';
+  padding: 25px 0;
 }
 
 .title_container .title_empty {
@@ -133,7 +136,7 @@ span.trip_user_name a:hover {
 }
 
 .title_container .title_child {
-  flex: 1;
+  flex: 2.5;
 }
 
 .title_child .title_header {
@@ -174,6 +177,7 @@ span.trip_user_name a:hover {
 
 .summary_key {
   font-weight: bold;
+  color: black;
 }
 
 span.up_vote_arrow {
@@ -221,9 +225,9 @@ th {
   text-align: left;
   font-weight: bold;
   font-size: 15px;
-  color: black;
+  color: white;
   text-transform: uppercase;
-  background-color: #F2FCFE;
+  background-color: #048aba;
 }
 
 .tbl-content {
@@ -241,6 +245,7 @@ td {
   font-size: 15px;
   color: black;
   border-bottom: solid 1px rgba(255,255,255,0.1);
+  background-color: white;
 }
 
 
@@ -299,9 +304,9 @@ h3.reviews_title {
   text-decoration: underline;
 }
 
-.review_comment a.rev_note {
+.review_comment .rev_note {
   text-decoration: none;
-  color: #28C3ED;
+  color: #848383;
 }
 
 .review_comment a.rev_note:hover {

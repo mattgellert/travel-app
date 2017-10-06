@@ -7,33 +7,53 @@
 </div>
 <!-- <img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=AIzaSyAhvRjmtrD0G0jo5dUipQLceVlL0V0lqgM" hidden> -->
 
-<h2>What Others Say</h2>
-<%= @destination.description %> <br><br>
+<hr>
 
-<h2>Address</h2>
-<%= @destination.address %> <br><br>
+<!-- Destination Summary Section -->
+<div class="destinations_container">
+  <div class="empty"></div>
+  <div class="destination_summary">
+    <h3 class="destination_header">Overview</h3>
 
-<h2>Category</h2>
-<%= @destination.category %> <br><br>
+    <p><span class="summary_key">Rating: </span><span class="dest_rating_<%=@destination.dest_average_rating%>">
+    </span>&nbsp;&nbsp;<%= @destination.ratings.size %> Review(s) </p>
 
-<h2>Location</h2>
-<%= @destination.location.city %> <br><br>
+    <p><span class="summary_key">What Others Say: </span><%= @destination.description %></p>
 
-<h2>Rating</h2>
-<%= @destination.dest_average_rating%>
-<br>
-<%= link_to "Add A Destination Review", new_destination_rating_path(@destination) %>
+    <p><span class="summary_key">Address: </span><%= @destination.address %></p>
+    <br>
+    <p><%= link_to "Add A Destination Review", new_destination_rating_path(@destination), class: "trip_change_button" %></p>
+  </div>
+  <div class="destination_map"></div>
+  <div class="empty"></div>
+</div>
 
 <hr>
 
-<h2>Destination Ratings</h2>
+<!-- Destination Rating Section -->
+<div class="destinations_container">
+  <div class="empty"></div>
+  <div class="destination_summary">
+    <h3 class="destination_header">Ratings</h3>
 
-<ul>
-  <% @destination.ratings.each_with_index do |rating, i|%>
-  <li><%= link_to rating.user.name, user_path(rating.user) %> | <%= rating.stars %> Stars
-    <ul>
-      <li>Comment: <%= link_to rating.note, edit_destination_rating_path(@destination, rating) %></li>
-    </ul>
-  </li>
-  <% end %>
-</ul>
+
+    <% @destination.ratings.each do |rating|%>
+    <div class="each_review_section_container">
+    <div class="user_image"><img src="http://cdn.skim.gs/image/upload/v1456344012/msi/Puppy_2_kbhb4a.jpg" alt="profile picture"></div>
+    <div class="review_comment">
+      <%= link_to rating.user.name, user_path(rating.user), class: "review_user_name"%> <br>
+      <span class="review_rating dest_rating_<%=rating.stars * 10%>"></span><br>
+
+      <% if rating.user == current_user %>
+        <%= link_to rating.note, edit_destination_rating_path(@destination, rating), class: "rev_note"%>
+      <% else %>
+        <span class="rev_note"><%=rating.note%></span>
+      <% end %>
+
+    </div>
+    </div>
+    <% end %>
+
+  </div>
+  <div class="empty"></div>
+</div>

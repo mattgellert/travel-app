@@ -18,13 +18,13 @@
   padding: 20px 10px;
   border-bottom: 1px solid #e5e5e5;
   border-top: 1px solid #e5e5e5;
-  background-color: #F2FCFE;
+  background-color: white;
   font-family: 'Lucida Grande';
 }
 
 .more_info {
   flex: 0.7;
-  background-color: #F2FCFE;
+  background-color: white;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #e5e5e5;
@@ -33,7 +33,7 @@
 
 .button_empty {
   flex: 1.5;
-  background-color: #F2FCFE;
+  background-color: white;
 }
 
 .button_area {
@@ -142,6 +142,7 @@ span.dest_rating_0:after {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 .destination_image {
@@ -153,4 +154,29 @@ span.dest_rating_0:after {
 
 .header_above_image {
   margin-bottom: 20px;
+}
+
+.destinations_container {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Lucida Grande';
+}
+
+.destinations_container .empty {
+  flex: 0.7;
+}
+
+.destinations_container .destination_summary {
+  flex: 2;
+}
+
+.destination_header {
+  font-size: 25px;
+  font-family: 'Lucida Grande';
+  padding-left: 10px;
+}
+
+.destination_summary p {
+  padding-left: 10px;
+  color: #848383;
 }
