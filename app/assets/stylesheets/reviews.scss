@@ -1,3 +1,27 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.review-container {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+}
+
+.review-container .empty {
+  flex: 1.0;
+}
+
+.review-container .reviewer-wrapper {
+  flex: 1.0;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewer-wrapper .reviewer {
+  flex: 2;
+}
+
+.reviewer-wrapper .edit-review {
+  flex: 1;
+}

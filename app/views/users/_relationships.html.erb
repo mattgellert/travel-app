@@ -2,8 +2,37 @@
 No one :(
 <% end %>
 
-<ul>
-  <% relationships.each do |person| %>
-  <li><%= link_to person.name, user_path(person) %></li>
-  <% end %>
-</ul>
+<% relationships.each do |person| %>
+  <div class="user_profile_container_2">
+    <!-- user profile section -->
+    <div class="empty_2"></div>
+      <div class="name_2">
+
+      <div class="name-button-wrapper_2">
+        <div class="user_image_2"><img src="<%=person.user_photo_url%>http://cdn.skim.gs/image/upload/v1456344012/msi/Puppy_2_kbhb4a.jpg" alt="profile picture"></div>
+        <div class="user_name_2"><%= link_to person.name, user_path(person) %></div>
+        <div class="social_button_2">
+          <% if person != current_user %>
+            <% if current_user.followees.include?(person) %>
+              <%= link_to "Following", destroy_relationship_path(person.id), method: :delete, class: "unfollow_button"%>
+            <% else %>
+              <%= link_to "Follow", new_relationship_path(person.id), method: :post, class: "follow_button"%>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+
+      <div class="trips_intensity_wrapper_2">
+        <div class="t_trips_2"><span class="total_trips"><%= person.trips.size %> Trips</span></div>
+        <div class="u_intensity_2"><span class="user_intensity"><%= User.intensity_level(person.average_intensity) %> Traveler</span></div>
+      </div>
+
+      <div class="followers_wrapper_2">
+      <%= link_to "#{person.num_of_followers} followers", followers_path(person)  %> &nbsp;<%= link_to "following #{person.num_of_followees}", followees_path(@user)  %>
+      </div>
+
+    </div>
+    <div class="empty_2"></div>
+  </div>
+<% end %>

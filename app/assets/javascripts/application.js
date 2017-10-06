@@ -39,11 +39,7 @@
       $(`#google_location_${n}`).val(place.adr_address)
       $(`#google_address_${n}`).val(place.formatted_address)
       $(`#google_name_${n}`).val(place.name)
-      //
-      // $(`#google_photo_1_${n}`).val(place.photos[0].getUrl({maxWidth: 5000, maxHeight: 5000}))
-      // $(`#google_photo_2_${n}`).val(place.photos[1].getUrl({maxWidth: 5000, maxHeight: 5000}))
-      // $(`#google_photo_3_${n}`).val(place.photos[2].getUrl({maxWidth: 5000, maxHeight: 5000}))
-
+      
       var elem1 = place.photos[0]
       var elem2 = place.photos[1]
       var elem3 = place.photos[2]
@@ -57,7 +53,7 @@
           $(`#google_photo_${index}_${n}`).val("")
         }
       })
-      // debugger
+
       let rating = 0
       let review = "something"
       place.reviews.forEach(function(elem){
