@@ -2,22 +2,17 @@
 
 <%= form_for @user, html: {class: "form-style-8"} do |f|%>
 
-<%= f.label :name %>
+<%= f.label :name, style: "font-weight:bold" %>
 <%= f.text_field :name %>
 
 <br>
 
-<%= f.label :user_photo_url %>
-<%= f.text_field :user_photo_url %>
-
-<br>
-
-<%= f.label :password %>
+<%= f.label :password, style: "font-weight:bold" %>
 <%= f.password_field :password%>
 
 <br>
 
-<%= f.label :password_confirmation %>
+<%= f.label :password_confirmation, style: "font-weight:bold" %>
 <%= f.password_field :password_confirmation %>
 
 <br>

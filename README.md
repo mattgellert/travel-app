@@ -1,24 +1,21 @@
-# README
+# TravelBug
+Using the Google Maps API to find destinations, users can upload itineraries of their travels to share with their friends. Users can for connections, follow users, as well as add reviews or ratings for destinations on their own or other users' itineraries.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+GitHub: https://github.com/mattgellert/travelbug-app
 
-Things you may want to cover:
+Built for the week 6 Ruby MVC group project at Flatiron with Christina Pan (cpan001)
 
-* Ruby version
+## Create Itineraries
+![Alt Text](https://media.giphy.com/media/3ohjUPbaJvn8bU3lFS/giphy.gif)
 
-* System dependencies
+## View Itineraries
+![Alt Text](https://media.giphy.com/media/3ohjV1FkNjLtb0X4CQ/giphy.gif)
 
-* Configuration
+## Add Destinations
+![Alt Text](https://media.giphy.com/media/3ohjUOEiO0K9vwUBjO/giphy.gif)
 
-* Database creation
+## Follow Users
+![Alt Text](https://media.giphy.com/media/l4EoYNfPInn859LNu/giphy.gif)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Leave Reviews and Ratings for Itineraries and Destinations
+![Alt Text](https://media.giphy.com/media/l4EoTXlZGzWb5n8f6/giphy.gif)

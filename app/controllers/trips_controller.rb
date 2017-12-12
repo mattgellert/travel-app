@@ -13,8 +13,13 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.create(trip_params)
-    redirect_to new_destinations_path(@trip)
+    @trip = Trip.new(trip_params)
+    if @trip.valid?
+      @trip.save
+      redirect_to new_destinations_path(@trip)
+    else
+      render :new
+    end
   end
 
   def new_destinations

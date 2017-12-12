@@ -8,11 +8,14 @@
   </div>
   <div class="title_empty"></div>
 </div>
-
+<img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=AIzaSyAhvRjmtrD0G0jo5dUipQLceVlL0V0lqgM" hidden>
 <div class="destination_images">
+  <% @destinations.length <= 3 ? x = 200 : x = 130%>
   <% @destinations.each do |destination| %>
-    <img class="destination_image" src="<%=destination.photo_url_1%>" width="130" height="130">
-    <% end %>
+
+      <img class="destination_image" src="<%=destination.photo_url_1%>" width="<%=x%>" height="<%=x%>">
+    
+  <% end %>
 </div>
 
 <hr>
@@ -85,7 +88,7 @@
             <tr>
               <td><%=link_to destination.name, destination_path(destination) %></td>
               <td><%= destination.category %></td>
-              <td><span class="dest_rating_<%=destination.owner_rating(@trip).try(:stars)%>">
+              <td><span class="dest_rating_i<%=destination.owner_rating(@trip).try(:stars)%>">
               </span></td>
               <!-- <td><%= destination.description %></td> -->
               <td><%= destination.location.city %></td>
@@ -101,6 +104,8 @@
   </div>
   <div class="it_empty"></div>
 </div>
+
+<br>
 <hr>
 
 <!-- Reviews Section -->

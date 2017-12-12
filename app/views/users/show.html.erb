@@ -39,7 +39,11 @@
     <div class="side_empty"></div>
     <div class="listing_photo">
       <% destination = trip.destinations.first %>
-      <img class="listing_image" src="<%=destination.try(:photo_url_1)%>">
+      <% if destination.photo_url_1 != "" %>
+        <img class="listing_image" src="<%=destination.try(:photo_url_1)%>">
+      <% else %>
+        <p> Photo N/A </p>
+      <% end %>
     </div>
     <div class="listing_details">
       <div class="trip_title"><%=trip.title%></div>

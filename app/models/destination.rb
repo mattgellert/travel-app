@@ -6,7 +6,6 @@ class Destination < ApplicationRecord
   has_many :user_raters, class_name: "User", through: :ratings
   accepts_nested_attributes_for :ratings
 
-
   #given a trip obj, which trip date does the destination belong to
   def day(trip)
     td = TripDestination.find_by(trip_id: trip.id, destination_id: self.id)
