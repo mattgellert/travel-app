@@ -1,4 +1,5 @@
-# README
+# TravelBug
+Using the Google Maps API to find destinations, users can upload itineraries of their travels to share with their friends. Users can follow users, as well as add reviews or ratings for destinations on their own or other users' itineraries.
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
