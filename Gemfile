@@ -23,8 +23,8 @@ gem 'uglifier', '>= 1.3.0'
 
 ###### HEROKU CHANGES
 ruby '2.4.1'
-gem 'sqlite3', group: :development
-gem 'pg', group: :production
+# gem 'sqlite3', group: :development
+gem 'pg'#, group: :production
 gem 'rails_12factor'
 
 
