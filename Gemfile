@@ -28,6 +28,7 @@ gem 'pg'#, group: :production
 gem 'rails_12factor'
 gem 'pry-rails'
 gem 'pry'
+gem 'google_places'
 
 
 
