@@ -36,9 +36,13 @@
     autocomplete.addListener('place_changed', function() {
       let place = autocomplete.getPlace()
 
-      $(`#google_location_${n}`).val(place.adr_address)
-      $(`#google_address_${n}`).val(place.formatted_address)
-      $(`#google_name_${n}`).val(place.name)
+      document.querySelector(`#google_location_${n}`).val(place.adr_address)
+      document.querySelector(`#google_address_${n}`).val(place.formatted_address)
+      document.querySelector(`#google_name_${n}`).val(place.name)
+      //
+      // $(`#google_location_${n}`).val(place.adr_address)
+      // $(`#google_address_${n}`).val(place.formatted_address)
+      // $(`#google_name_${n}`).val(place.name)
 
       var elem1 = place.photos[0]
       var elem2 = place.photos[1]
@@ -47,10 +51,12 @@
       elems.forEach(function(elem, index){
         if(elem != undefined){
           let photo_url = elem.getUrl({maxWidth: 5000, maxHeight: 5000})
-          $(`#google_photo_${index}_${n}`).val(photo_url)
+          document.querySelector(`#google_photo_${index}_${n}`).val(photo_url)
+          // $(`#google_photo_${index}_${n}`).val(photo_url)
         }
         else {
-          $(`#google_photo_${index}_${n}`).val("")
+          document.querySelector(`#google_photo_${index}_${n}`).val("")
+          // $(`#google_photo_${index}_${n}`).val("")
         }
       })
 
@@ -62,7 +68,8 @@
           review = elem.text
         }
       })
-      $(`#google_desc_${n}`).val(review)
+      document.querySelector(`#google_desc_${n}`).val(review)
+      // $(`#google_desc_${n}`).val(review)
     })
   }
 

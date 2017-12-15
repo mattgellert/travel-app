@@ -17,7 +17,8 @@
     autocomplete2.bindTo('bounds', map2)
     autocomplete2.addListener('place_changed', function() {
       var place = autocomplete2.getPlace()
-      $("#google_location_2").val(place.adr_address)
+      document.querySelector("#google_location_2").val(place.adr_address)
+      // $("#google_location_2").val(place.adr_address)
     })
   }
 </script>
