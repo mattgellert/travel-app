@@ -3,7 +3,6 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.sort_trips_by_votes(Trip.all)
-    render "index"
   end
 
   def new
