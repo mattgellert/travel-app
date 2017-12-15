@@ -1318,10 +1318,11 @@ var logID = 'log',
   console.log(document)
   document.querySelector('head').appendChild(log)
 // $('body').append(log);
-  document.querySelectorAll('input[type=radio]').change(function () {
-    var me = $(this);
-    log.html(me.attr('value'));
-  });
+  // debugger
+  // document.querySelectorAll('input[type=radio]').change(function () {
+  //   var me = $(this);
+  //   log.html(me.attr('value'));
+  // });
   // $('[type*="radio"]').change(function () {
   //   var me = $(this);
   //   log.html(me.attr('value'));
