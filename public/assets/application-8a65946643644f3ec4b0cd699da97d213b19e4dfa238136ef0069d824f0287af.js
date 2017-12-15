@@ -1313,7 +1313,7 @@ return t.dispatch("turbolinks:before-render",{data:{newBody:e}})},r.prototype.no
 }).call(this);
 var logID = 'log',
   log = document.createElement('div');
-  log.id = logId;
+  log.id = logID;
   // log = $('<div id="'+logID+'"></div>');
 $('body').append(log);
   $('[type*="radio"]').change(function () {
