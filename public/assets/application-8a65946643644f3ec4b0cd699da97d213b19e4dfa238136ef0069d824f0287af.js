@@ -1316,6 +1316,7 @@ var logID = 'log',
   log.id = logID;
   // log = $('<div id="'+logID+'"></div>');
   console.log(document)
+  debugger
   document.querySelector('body').appendChild(log)
 // $('body').append(log);
   document.querySelectorAll('input[type=radio]').change(function () {
