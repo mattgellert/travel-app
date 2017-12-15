@@ -1311,12 +1311,12 @@ return t.dispatch("turbolinks:before-render",{data:{newBody:e}})},r.prototype.no
 
 
 }).call(this);
-var logID = 'log',
-  log = document.createElement('div');
-  log.id = logID;
-  // log = $('<div id="'+logID+'"></div>');
-  console.log(document)
-  document.querySelector('head').appendChild(log)
+// var logID = 'log',
+//   log = document.createElement('div');
+//   log.id = logID;
+//   // log = $('<div id="'+logID+'"></div>');
+//   console.log(document)
+//   document.querySelector('head').appendChild(log)
 // $('body').append(log);
   // debugger
   // document.querySelectorAll('input[type=radio]').change(function () {
