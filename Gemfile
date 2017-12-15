@@ -26,6 +26,8 @@ ruby '2.4.1'
 # gem 'sqlite3', group: :development
 gem 'pg'#, group: :production
 gem 'rails_12factor'
+gem 'pry-rails'
+gem 'pry'
 
 
 
