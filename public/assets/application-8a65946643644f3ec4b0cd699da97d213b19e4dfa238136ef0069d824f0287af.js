@@ -4,6 +4,8 @@ https://github.com/rails/rails/blob/master/actionview/app/assets/javascripts
 Released under the MIT license
  */
 
+ //= require jquery
+
 
 (function() {
   var context = this;
