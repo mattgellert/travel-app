@@ -1355,13 +1355,13 @@ return t.dispatch("turbolinks:before-render",{data:{newBody:e}})},r.prototype.no
 
 
 }).call(this);
-var logID = 'log',
-  log = $('<div id="'+logID+'"></div>');
-$('body').append(log);
-  $('[type*="radio"]').change(function () {
-    var me = $(this);
-    log.html(me.attr('value'));
-  });
+// var logID = 'log',
+//   log = $('<div id="'+logID+'"></div>');
+// $('body').append(log);
+//   $('[type*="radio"]').change(function () {
+//     var me = $(this);
+//     log.html(me.attr('value'));
+//   });
 (function() {
 
 
