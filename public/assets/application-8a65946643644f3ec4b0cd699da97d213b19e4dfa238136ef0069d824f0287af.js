@@ -1315,11 +1315,16 @@ var logID = 'log',
   log = document.createElement('div');
   log.id = logID;
   // log = $('<div id="'+logID+'"></div>');
-$('body').append(log);
-  $('[type*="radio"]').change(function () {
+  document.body.appendChild(log)
+// $('body').append(log);
+  document.querySelectorAll('input[type=radio]').change(function () {
     var me = $(this);
     log.html(me.attr('value'));
   });
+  // $('[type*="radio"]').change(function () {
+  //   var me = $(this);
+  //   log.html(me.attr('value'));
+  // });
 (function() {
 
 
