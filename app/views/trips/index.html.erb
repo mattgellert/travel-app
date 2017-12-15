@@ -1,3 +1,17 @@
 <h1 align="center">Trips<img class="header-logo" src="/travelbug3_hollow_blackish.svg" width="15px"></h1>
 
 <!-- Search Bar -->
+
+<%= form_tag trip_search_path, method: "get", class: 'form-style-8' do %>
+  <span style="font-weight:bold; font-size:20px;">Search Trips</span>
+
+  <br></br>
+
+  Location <%= text_field_tag 'search[location]'%><br>
+  Days <%= number_field_tag 'search[days]'%><br>
+  All Friends? <%= check_box_tag 'search[qfriends]'%>
+  <%= submit_tag "Search", style: "float: right;" %>
+<% end %>
+
+
+<!-- Show All Trips Section -->
