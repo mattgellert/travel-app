@@ -146,11 +146,12 @@ class Trip < ApplicationRecord
   end
 
   def total_votes
-      if self.reviews.length == 0
+      if self.reviews.length != 0
+        return self.reviews.inject(0) do |sum, review|
+          sum + review.vote
+        end
+      else
         return 0
-      end
-      self.reviews.inject(0) do |sum, review|
-        sum + review.vote
       end
   end
 
