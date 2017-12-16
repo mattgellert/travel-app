@@ -1,5 +1,5 @@
 <h1 align="center">Trips<img class="header-logo" src="/travelbug3_hollow_blackish.svg" width="15px"></h1>
-
+<img src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=AIzaSyAhvRjmtrD0G0jo5dUipQLceVlL0V0lqgM" hidden>
 <!-- Search Bar -->
 
 <%= form_tag trip_search_path, method: "get", class: 'form-style-8' do %>
@@ -22,7 +22,12 @@
 <% @trips.each do |trip| %>
   <div class="listing_container">
     <div class="side_empty"></div>
-
+    <div class="listing_photo">
+      <% destination = trip.destinations.first %>
+      <% if destination.photo_url_1 != "" %>
+        <img class="listing_image" src="<%=destination.try(:photo_url_1)%>">
+      <% end %>
+    </div>
     <div class="listing_details">
       <div class="trip_title"><%=trip.title%> | <span class="trip_user_name"><%=link_to trip.user.name, user_path(trip.user)%></span></div>
           <p>
