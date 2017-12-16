@@ -48,7 +48,7 @@
     <div class="listing_details">
       <div class="trip_title"><%=trip.title%></div>
           <p>
-            <% if trip.total_votes.to_i >= 0 %>
+            <% if !!trip.total_votes && (trip.total_votes.to_i >= 0) %>
             <span class="up_vote_arrow">
             Trending: &#8679;  <%= trip.total_votes %> Votes</p>
             <% else %>
