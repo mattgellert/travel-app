@@ -2,6 +2,7 @@
 Using the Google Maps API to find destinations, users can upload itineraries of their travels to share with their friends. Users can follow users, as well as add reviews or ratings for destinations on their own or other users' itineraries.
 
 Website: https://travel-bug-app.herokuapp.com/
+
 GitHub: https://github.com/mattgellert/travelbug-app
 
 Built for the week 6 Ruby MVC group project at Flatiron with Christina Pan (cpan001)
